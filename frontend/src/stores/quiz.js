@@ -4,7 +4,7 @@ import { evaluateQuiz as requestEvaluation, generateQuiz as requestQuiz } from '
 function initialRecordings(questions) {
   const map = {}
   questions.forEach((q) => {
-    map[q.id] = { status: 'idle', elapsed: 0, mode: 'text', textAnswer: '', transcript: '' }
+    map[q.id] = { status: 'idle', elapsed: 0, timing: false, mode: 'text', textAnswer: '', transcript: '' }
   })
   return map
 }
@@ -91,18 +91,26 @@ export const useQuizStore = defineStore('quiz', {
       }
     },
     goTo(index) {
-      if (index >= 0 && index < this.questions.length) this.currentIndex = index
+      if (index >= 0 && index < this.questions.length) {
+        this.currentIndex = index
+      }
     },
     next() {
-      if (this.currentIndex < this.questions.length - 1) this.currentIndex++
+      if (this.currentIndex < this.questions.length - 1) this.goTo(this.currentIndex + 1)
     },
     prev() {
-      if (this.currentIndex > 0) this.currentIndex--
+      if (this.currentIndex > 0) this.goTo(this.currentIndex - 1)
     },
     tickCurrent() {
       const q = this.currentQuestion
-      if (!q || this.recordings[q.id]?.status !== 'recording') return
+      const recording = q ? this.recordings[q.id] : null
+      if (!recording || (recording.status !== 'recording' && !recording.timing)) return
       this.recordings[q.id].elapsed++
+    },
+    startTextTiming(id) {
+      const recording = this.recordings[id]
+      if (!recording) return
+      recording.timing = true
     },
     setResponseMode(id, mode) {
       if (mode !== 'text' && mode !== 'audio') return
@@ -111,17 +119,18 @@ export const useQuizStore = defineStore('quiz', {
     },
     startRecording(id) {
       this.recordings[id].mode = 'audio'
+      this.recordings[id].timing = true
       this.recordings[id].status = 'recording'
     },
     stopRecording(id, recording) {
       this.recordings[id] = {
         ...this.recordings[id],
+        ...recording,
         status: 'recorded',
         mode: 'audio',
-        elapsed: Math.max(1, Math.round(recording?.duration || this.recordings[id]?.elapsed || 0)),
-        ...recording,
+        timing: true,
+        elapsed: this.recordings[id].elapsed,
       }
-      this.recordings[id].mode = 'audio'
     },
     updateTranscript(id, transcript) {
       if (this.recordings[id]?.status !== 'recorded') return
@@ -129,10 +138,13 @@ export const useQuizStore = defineStore('quiz', {
     },
     submitTextAnswer(id, transcript) {
       this.recordings[id] = {
+        ...this.recordings[id],
         status: 'recorded',
         elapsed: this.recordings[id]?.elapsed ?? 0,
+        mode: 'text',
+        timing: this.recordings[id]?.timing ?? false,
+        textAnswer: transcript,
         transcript,
-        answerType: 'text',
       }
     },
     deleteRecording(id) {
@@ -140,7 +152,6 @@ export const useQuizStore = defineStore('quiz', {
       this.recordings[id] = {
         ...this.recordings[id],
         status: 'idle',
-        elapsed: 0,
         transcript: '',
         audioUrl: undefined,
         blob: undefined,

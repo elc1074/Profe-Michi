@@ -9,7 +9,7 @@ const props = defineProps({
   transcript: { type: String, default: '' },
   questionId: { type: [String, Number], required: true },
 })
-const emit = defineEmits(['start', 'stop', 'delete', 'update-transcript', 'submit-text'])
+const emit = defineEmits(['start', 'stop', 'delete', 'update-transcript', 'submit-text', 'start-text-timing'])
 
 const { t, locale } = useI18n()
 
@@ -136,6 +136,10 @@ function submitTextAnswer() {
   textMode.value = false
 }
 
+function returnToAudio() {
+  textMode.value = false
+}
+
 const isPlaying = ref(false)
 async function togglePlay() {
   if (!audioElement.value) return
@@ -167,11 +171,12 @@ const formattedTime = computed(() => {
           autofocus
           class="mt-2 w-full resize-y rounded-lg border border-lagoon/15 bg-cream-soft p-3 text-sm text-lagoon outline-none transition focus:border-rosewood dark:border-cream-soft/20 dark:bg-lagoon-soft dark:text-cream-soft"
           :placeholder="t('quiz.recorder.textAnswerPlaceholder')"
+          @focus="$emit('start-text-timing')"
         />
         <p class="mt-1 text-xs text-lagoon/55 dark:text-cream-soft/55">{{ t('quiz.recorder.textAnswerHint') }}</p>
       </div>
       <div class="flex gap-2">
-        <button type="button" @click="textMode = false" class="rounded-full bg-misty/40 px-4 py-2 text-sm font-semibold text-lagoon transition hover:bg-misty/60 dark:bg-cream-soft/10 dark:text-cream-soft">
+        <button type="button" @click="returnToAudio" class="rounded-full bg-misty/40 px-4 py-2 text-sm font-semibold text-lagoon transition hover:bg-misty/60 dark:bg-cream-soft/10 dark:text-cream-soft">
           {{ t('quiz.recorder.backToAudio') }}
         </button>
         <button type="button" :disabled="!textAnswer.trim()" @click="submitTextAnswer" class="rounded-full bg-rosewood px-4 py-2 text-sm font-semibold text-cream-soft transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50">
