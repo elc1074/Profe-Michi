@@ -1,7 +1,7 @@
 {
   "app": {
     "name": "Profe Michi",
-    "tagline": "Repasa anatomía veterinaria con tu voz"
+    "tagline": "Repasa anatomía veterinaria por texto o voz"
   },
   "nav": {
     "home": "Inicio",
@@ -12,14 +12,14 @@
     "theme": "Cambiar tema"
   },
   "home": {
-    "title": "Estudia anatomía respondiendo en voz alta",
-    "subtitle": "Sube el material de tu ramo, responde las preguntas hablando y recibe una corrección amable en minutos.",
+    "title": "Estudia anatomía respondiendo por texto o voz",
+    "subtitle": "Sube el material de tu ramo, responde las preguntas escribiendo o hablando y recibe una corrección amable en minutos.",
     "cta": "Nuevo quiz",
     "stepsTitle": "Cómo funciona",
     "step1Title": "1. Sube tu PDF",
     "step1Body": "Comparte el apunte o la guía que quieres repasar.",
-    "step2Title": "2. Responde con audio",
-    "step2Body": "Explica cada respuesta hablando, sin apuro.",
+    "step2Title": "2. Responde por texto o audio",
+    "step2Body": "Escribe tu respuesta o explícala hablando, sin apuro.",
     "step3Title": "3. Recibe feedback",
     "step3Body": "Profe Michi corrige y te da comentarios para mejorar.",
     "futureTitle": "Muy pronto",
@@ -58,6 +58,13 @@
       "unanswered": "Pendiente"
     },
     "timer": "Tiempo en esta pregunta",
+    "responseMode": {
+      "label": "Forma de respuesta",
+      "text": "Texto",
+      "audio": "Audio",
+      "textLabel": "Tu respuesta",
+      "textPlaceholder": "Escribe tu respuesta aquí..."
+    },
     "recorder": {
       "idleTitle": "Toca para grabar tu respuesta",
       "idleHint": "Explica la respuesta con tus palabras, con calma.",
@@ -99,7 +106,7 @@
   },
   "grading": {
     "title": "Corrigiendo tus respuestas",
-    "subtitle": "Profe Michi está escuchando y evaluando cada respuesta.",
+    "subtitle": "Profe Michi está evaluando cada respuesta.",
     "note": "Esto es una simulación: no se envía nada a un servidor real todavía."
   },
   "result": {

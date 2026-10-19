@@ -102,15 +102,30 @@ export async function generateQuiz(file) {
 }
 
 export async function evaluateQuiz(quiz, recordings) {
+  const answers = quiz.questions
+    .map((question) => {
+      const recording = recordings[question.id]
+      const answer = (recording?.mode === 'text' ? recording.textAnswer : recording?.transcript)?.trim() ?? ''
+      return answer ? {
+        questionId: question.id,
+        question: question.prompt,
+        answer,
+      } : null
+    })
+    .filter(Boolean)
+
+  if (answers.length === 0) {
+    return {
+      answers: [],
+      overallScore: 0,
+      overallMax: quiz.questions.length * 10,
+      summary: '',
+    }
+  }
+
   if (!quiz?.chapter?.trim()) {
     throw new Error('O capítulo não foi retornado ao gerar o quiz. Ajuste a resposta do fluxo generate para incluir "chapter".')
   }
-
-  const answers = quiz.questions.map((question) => ({
-    questionId: question.id,
-    question: question.prompt,
-    answer: recordings[question.id]?.transcript?.trim() ?? '',
-  }))
 
   const formulario = new FormData()
   formulario.append('action', 'evaluate')

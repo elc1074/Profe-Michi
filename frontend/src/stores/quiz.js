@@ -4,7 +4,7 @@ import { evaluateQuiz as requestEvaluation, generateQuiz as requestQuiz } from '
 function initialRecordings(questions) {
   const map = {}
   questions.forEach((q) => {
-    map[q.id] = { status: 'idle', elapsed: 0 } // idle | recording | recorded
+    map[q.id] = { status: 'idle', elapsed: 0, mode: 'text', textAnswer: '', transcript: '' }
   })
   return map
 }
@@ -34,13 +34,23 @@ export const useQuizStore = defineStore('quiz', {
     currentQuestion: (state) => state.questions[state.currentIndex],
     totalQuestions: (state) => state.questions.length,
     answeredCount: (state) =>
-      Object.values(state.recordings).filter((r) => r.status === 'recorded').length,
+      Object.values(state.recordings).filter((recording) => {
+        const answer = recording.mode === 'text' ? recording.textAnswer : recording.transcript
+        return answer?.trim()
+      }).length,
     unansweredIds: (state) =>
       state.questions
-        .filter((q) => state.recordings[q.id]?.status !== 'recorded')
+        .filter((q) => {
+          const recording = state.recordings[q.id]
+          const answer = recording?.mode === 'text' ? recording.textAnswer : recording?.transcript
+          return !answer?.trim()
+        })
         .map((q) => q.id),
     progressPercent: (state) => {
-      const answered = Object.values(state.recordings).filter((r) => r.status === 'recorded').length
+      const answered = Object.values(state.recordings).filter((recording) => {
+        const answer = recording.mode === 'text' ? recording.textAnswer : recording.transcript
+        return answer?.trim()
+      }).length
       return Math.round((answered / state.questions.length) * 100)
     },
   },
@@ -82,23 +92,43 @@ export const useQuizStore = defineStore('quiz', {
       if (!q || this.recordings[q.id]?.status !== 'recording') return
       this.recordings[q.id].elapsed++
     },
+    setResponseMode(id, mode) {
+      if (mode !== 'text' && mode !== 'audio') return
+      if (this.recordings[id]?.status === 'recording') return
+      this.recordings[id].mode = mode
+    },
     startRecording(id) {
+      this.recordings[id].mode = 'audio'
       this.recordings[id].status = 'recording'
     },
     stopRecording(id, recording) {
       this.recordings[id] = {
+        ...this.recordings[id],
         status: 'recorded',
+        mode: 'audio',
         elapsed: Math.max(1, Math.round(recording?.duration || this.recordings[id]?.elapsed || 0)),
         ...recording,
       }
+      this.recordings[id].mode = 'audio'
     },
     updateTranscript(id, transcript) {
       if (this.recordings[id]?.status !== 'recorded') return
       this.recordings[id].transcript = transcript
     },
+    updateTextAnswer(id, answer) {
+      if (!this.recordings[id]) return
+      this.recordings[id].textAnswer = answer
+    },
     deleteRecording(id) {
       if (this.recordings[id]?.audioUrl) URL.revokeObjectURL(this.recordings[id].audioUrl)
-      this.recordings[id] = { status: 'idle', elapsed: 0 }
+      this.recordings[id] = {
+        ...this.recordings[id],
+        status: 'idle',
+        elapsed: 0,
+        transcript: '',
+        audioUrl: undefined,
+        blob: undefined,
+      }
     },
     async submitForGrading() {
       this.grading = true
@@ -113,7 +143,9 @@ export const useQuizStore = defineStore('quiz', {
         const questions = this.questions.map((question) => {
           const answer = answersByQuestionId.get(String(question.id))
           const recording = this.recordings[question.id]
-          const studentAnswer = recording?.transcript?.trim() ?? ''
+          const studentAnswer = (
+            recording?.mode === 'text' ? recording.textAnswer : recording?.transcript
+          )?.trim() ?? ''
           const score = answer?.score ?? 0
 
           return {
@@ -134,7 +166,7 @@ export const useQuizStore = defineStore('quiz', {
         this.result = {
           questions,
           totalScore: Number.isFinite(evaluation.overallScore) ? evaluation.overallScore : calculatedScore,
-          maxScore: Number.isFinite(evaluation.overallMax) ? evaluation.overallMax : calculatedMax,
+          maxScore: calculatedMax,
           summary: evaluation.summary,
         }
       } finally {

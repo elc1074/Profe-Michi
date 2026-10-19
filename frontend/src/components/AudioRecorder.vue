@@ -10,7 +10,7 @@ const props = defineProps({
   transcript: { type: String, default: '' },
   questionId: { type: [String, Number], required: true },
 })
-const emit = defineEmits(['start', 'stop', 'delete', 'update-transcript'])
+const emit = defineEmits(['start', 'stop', 'delete', 'update-transcript', 'busy'])
 
 const { t, locale } = useI18n()
 
@@ -45,6 +45,7 @@ async function startRecording() {
   krokoDialogDismissed.value = false
   showKrokoDialog.value = true
   preparing.value = true
+  emit('busy', true)
   try {
     transcription = new KrokoLiveTranscription({
       language: locale.value,
@@ -63,6 +64,7 @@ async function startRecording() {
     error.value = reason.message || t('error.body')
   } finally {
     preparing.value = false
+    emit('busy', false)
     showKrokoDialog.value = false
   }
 }
