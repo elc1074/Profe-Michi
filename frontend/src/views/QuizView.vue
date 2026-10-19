@@ -24,8 +24,14 @@ onMounted(() => {
 })
 onBeforeUnmount(() => clearInterval(ticker))
 
+<<<<<<< HEAD
 const currentRecording = computed(() => quiz.recordings[quiz.currentQuestion?.id])
 const responseMode = computed(() => currentRecording.value.mode)
+=======
+const activeQuestion = computed(() => quiz.currentQuestion)
+const currentRecording = computed(() => quiz.recordings[activeQuestion.value?.id] ?? { status: 'idle', elapsed: 0 })
+const isRecording = computed(() => Object.values(quiz.recordings).some((recording) => recording.status === 'recording'))
+>>>>>>> main
 
 function formatTime(sec) {
   const m = Math.floor(sec / 60)
@@ -54,7 +60,7 @@ function reviewFirstUnanswered() {
 </script>
 
 <template>
-  <div v-if="quiz.currentQuestion" class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12">
+  <div v-if="activeQuestion" class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12">
     <QuestionIndex
       :questions="quiz.questions"
       :recordings="quiz.recordings"
@@ -62,18 +68,20 @@ function reviewFirstUnanswered() {
       @select="quiz.goTo($event)"
     />
 
-    <div class="mt-6 flex items-center justify-between text-sm text-lagoon/55 dark:text-cream-soft/55">
-      <span>{{ t('quiz.questionLabel', { current: quiz.currentIndex + 1, total: quiz.totalQuestions }) }}</span>
-      <span class="flex items-center gap-1.5">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" /><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
-        {{ t('quiz.timer') }}: {{ formatTime(currentRecording.elapsed) }}
-      </span>
-    </div>
+    <section :key="activeQuestion.id">
+      <div class="mt-6 flex items-center justify-between text-sm text-lagoon/55 dark:text-cream-soft/55">
+        <span>{{ t('quiz.questionLabel', { current: quiz.currentIndex + 1, total: quiz.totalQuestions }) }}</span>
+        <span class="flex items-center gap-1.5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" /><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+          {{ t('quiz.timer') }}: {{ formatTime(currentRecording.elapsed) }}
+        </span>
+      </div>
 
-    <h1 class="mt-3 text-xl font-semibold leading-snug text-lagoon dark:text-cream-soft sm:text-2xl">
-      {{ quiz.currentQuestion.prompt }}
-    </h1>
+      <h1 class="mt-3 text-xl font-semibold leading-snug text-lagoon dark:text-cream-soft sm:text-2xl">
+        {{ activeQuestion.prompt }}
+      </h1>
 
+<<<<<<< HEAD
     <div class="mt-6">
       <div class="mb-3 grid grid-cols-2 rounded-xl bg-lagoon/5 p-1 dark:bg-cream-soft/5" role="tablist" :aria-label="t('quiz.responseMode.label')">
         <button
@@ -128,19 +136,36 @@ function reviewFirstUnanswered() {
         />
       </div>
     </div>
+=======
+      <div class="mt-6">
+        <AudioRecorder
+          :status="currentRecording.status"
+          :question-id="activeQuestion.id"
+          :audio-url="currentRecording.audioUrl"
+          :transcript="currentRecording.transcript"
+          @start="quiz.startRecording(activeQuestion.id)"
+          @stop="quiz.stopRecording(activeQuestion.id, $event)"
+          @delete="quiz.deleteRecording(activeQuestion.id)"
+          @update-transcript="quiz.updateTranscript(activeQuestion.id, $event)"
+          @submit-text="quiz.submitTextAnswer(activeQuestion.id, $event)"
+        />
+      </div>
+    </section>
+>>>>>>> main
 
     <div class="mt-8 flex items-center justify-between gap-3">
-      <BaseButton variant="ghost" :disabled="quiz.currentIndex === 0" @click="quiz.prev()">
+      <BaseButton variant="ghost" :disabled="quiz.currentIndex === 0 || isRecording" @click="quiz.prev()">
         {{ t('quiz.prev') }}
       </BaseButton>
       <BaseButton
         v-if="quiz.currentIndex < quiz.totalQuestions - 1"
         variant="secondary"
+        :disabled="isRecording"
         @click="quiz.next()"
       >
         {{ t('quiz.next') }}
       </BaseButton>
-      <BaseButton v-else variant="primary" @click="handleSubmitClick">
+      <BaseButton v-else variant="primary" :disabled="isRecording" @click="handleSubmitClick">
         {{ t('quiz.submit') }}
       </BaseButton>
     </div>

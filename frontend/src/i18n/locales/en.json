@@ -27,7 +27,7 @@
   },
   "upload": {
     "title": "Upload your study material",
-    "subtitle": "We'll use your PDF to generate a 5-question quiz.",
+    "subtitle": "Set up your quiz and we'll use your PDF to generate the questions.",
     "dropTitle": "Drag your PDF here",
     "dropSubtitle": "or browse your computer",
     "browse": "Choose file",
@@ -35,10 +35,21 @@
     "remove": "Remove",
     "replace": "Replace",
     "questionCountLabel": "Questions in this quiz",
-    "questionCountNote": "Right now every quiz has 5 questions. Choosing 5 or 10 is coming soon.",
+    "difficultyLabel": "Difficulty",
+    "difficulty": { "easy": "Easy", "medium": "Medium", "hard": "Hard" },
+    "difficultyNote": {
+      "easy": "More direct questions to review the main concepts.",
+      "medium": "A balance between understanding and applying the material.",
+      "hard": "More analytical questions that require connecting concepts."
+    },
+    "questionCountNote": "Choose between 5 and 15 questions.",
     "cta": "Generate quiz",
     "noFileHint": "Upload a PDF to continue",
-    "invalidType": "That file isn't a PDF. Try another one."
+    "invalidType": "That file isn't a PDF. Try another one.",
+    "audioPreparing": "Preparing voice responses while you choose your material…",
+    "audioReady": "Voice responses are ready.",
+    "audioUnavailable": "Voice responses could not be prepared. You can still answer in writing.",
+    "audioUnsupported": "Your browser does not support voice transcription. You can continue with written answers."
   },
   "generating": {
     "title": "Preparing your questions",
@@ -68,19 +79,35 @@
     "recorder": {
       "idleTitle": "Tap to record your answer",
       "idleHint": "Explain the answer in your own words, no rush.",
+      "answerByText": "I prefer to answer in writing",
+      "textAnswerTitle": "Write your answer",
+      "textAnswerPlaceholder": "Type your answer here…",
+      "textAnswerHint": "Use this option if you prefer not to record audio or your microphone is unavailable.",
+      "saveTextAnswer": "Save answer",
+      "backToAudio": "Back to audio",
       "recordingTitle": "Recording…",
       "recordingHint": "Tap to stop when you're done.",
       "preparingTranscription": "Preparing transcription…",
+      "preparingAudio": "Getting audio ready for you…",
+      "audioUnsupportedTitle": "Audio answers are unavailable",
+      "audioUnsupportedHint": "Your browser does not support the features needed for voice transcription. Please answer in writing.",
+      "finalizingTitle": "Finalizing transcription…",
+      "finalizingHint": "Please wait a moment while we save your complete answer.",
       "liveTranscriptTitle": "Live transcription",
       "liveTranscriptHint": "What you say will appear here…",
       "editTranscriptTitle": "Review your answer before sending",
       "editTranscriptHint": "You can correct any incorrectly recognized words.",
       "readyTitle": "Recording ready",
       "readyHint": "You can listen back or re-record.",
+      "textReadyTitle": "Written answer ready",
+      "textReadyHint": "You can review or delete your answer.",
+      "editTextAnswerTitle": "Review your answer",
+      "editTextAnswerHint": "You can edit your answer before submitting it.",
       "play": "Play",
       "pause": "Pause",
       "reRecord": "Re-record",
       "delete": "Delete recording",
+      "deleteTextAnswer": "Delete answer",
       "start": "Record",
       "stop": "Stop"
     },
@@ -133,7 +160,25 @@
   "error": {
     "title": "Something went wrong",
     "body": "We couldn't finish this action. You can try again.",
-    "retry": "Try again"
+    "retry": "Try again",
+    "webhook": {
+      "notConfigured": "The question service is not configured. Please contact the team responsible.",
+      "connection": "We couldn't connect to the question service. Try a private window or another browser, and check whether a VPN or blocker is active.",
+      "timeout": "The service took too long to respond. Check your connection and try again.",
+      "accessDenied": "You don't have permission to access the question service. Please contact the team responsible.",
+      "notFound": "We couldn't find the question service. Please contact the team responsible.",
+      "fileTooLarge": "The file is too large to process. Try a smaller PDF.",
+      "tooManyRequests": "There are too many requests right now. Wait a few minutes and try again.",
+      "aiUnavailable": "The AI service is temporarily unavailable. Wait a few minutes and try again.",
+      "server": "The question service has a temporary problem. Wait a few minutes and try again.",
+      "requestFailed": "We couldn't process the request (error {status}). Try again.",
+      "invalidResponse": "The service responded in an unexpected format. Please contact the team responsible.",
+      "invalidPdf": "The selected file is not a valid PDF. Try another file.",
+      "missingQuestions": "The service didn't generate any questions. Try again.",
+      "missingChapter": "We couldn't prepare the material to grade the answers. Generate the quiz again.",
+      "invalidEvaluation": "The service returned an evaluation in an invalid format. Try again.",
+      "missingEvaluation": "The service didn't return the answer grading. Try again."
+    }
   },
   "common": {
     "back": "Back"

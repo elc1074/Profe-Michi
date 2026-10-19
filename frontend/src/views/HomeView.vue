@@ -3,9 +3,17 @@ import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import BaseButton from '../components/BaseButton.vue'
 import MascotFull from '../components/MascotFull.vue'
+import { preloadLiveTranscription } from '../services/krokoLiveTranscription'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const router = useRouter()
+
+function startNewQuiz() {
+  // Normally this shares the recognizer initialization started by App.vue.
+  // It also retries a failed preload before the student reaches the quiz.
+  void preloadLiveTranscription(locale.value).catch(() => {})
+  router.push('/enviar')
+}
 
 const steps = [
   { title: 'step1Title', body: 'step1Body', icon: 'upload' },
@@ -24,7 +32,7 @@ const steps = [
         <p class="mt-4 max-w-md text-base text-lagoon/70 dark:text-cream-soft/70">
           {{ t('home.subtitle') }}
         </p>
-        <BaseButton size="lg" class="mt-8" @click="router.push('/enviar')">
+        <BaseButton size="lg" class="mt-8" @click="startNewQuiz">
           {{ t('home.cta') }}
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
         </BaseButton>

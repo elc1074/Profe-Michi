@@ -27,7 +27,7 @@
   },
   "upload": {
     "title": "Envie o material de estudo",
-    "subtitle": "Usaremos seu PDF para gerar um quiz de 5 perguntas.",
+    "subtitle": "Configure seu quiz e usaremos seu PDF para gerar as perguntas.",
     "dropTitle": "Arraste seu PDF aqui",
     "dropSubtitle": "ou procure o arquivo no computador",
     "browse": "Escolher arquivo",
@@ -35,10 +35,21 @@
     "remove": "Remover",
     "replace": "Substituir",
     "questionCountLabel": "Perguntas neste quiz",
-    "questionCountNote": "Por enquanto cada quiz tem 5 perguntas. Em breve você poderá escolher entre 5 ou 10.",
+    "difficultyLabel": "Dificuldade",
+    "difficulty": { "easy": "Fácil", "medium": "Médio", "hard": "Difícil" },
+    "difficultyNote": {
+      "easy": "Perguntas mais diretas para revisar os conceitos principais.",
+      "medium": "Equilíbrio entre compreensão e aplicação do conteúdo.",
+      "hard": "Perguntas mais analíticas, que exigem relacionar conceitos."
+    },
+    "questionCountNote": "Escolha entre 5 e 15 perguntas.",
     "cta": "Gerar quiz",
     "noFileHint": "Envie um PDF para continuar",
-    "invalidType": "Esse arquivo não é um PDF. Tente outro."
+    "invalidType": "Esse arquivo não é um PDF. Tente outro.",
+    "audioPreparing": "Preparando as respostas por áudio enquanto você escolhe o material…",
+    "audioReady": "As respostas por áudio estão prontas.",
+    "audioUnavailable": "Não foi possível preparar as respostas por áudio. Você ainda pode responder por texto.",
+    "audioUnsupported": "Seu navegador não oferece suporte à transcrição por áudio. Você pode continuar respondendo por texto."
   },
   "generating": {
     "title": "Preparando suas perguntas",
@@ -68,19 +79,35 @@
     "recorder": {
       "idleTitle": "Toque para gravar sua resposta",
       "idleHint": "Explique a resposta com suas palavras, com calma.",
+      "answerByText": "Prefiro responder por texto",
+      "textAnswerTitle": "Escreva sua resposta",
+      "textAnswerPlaceholder": "Digite sua resposta aqui…",
+      "textAnswerHint": "Use esta opção se preferir não gravar áudio ou se o microfone não estiver disponível.",
+      "saveTextAnswer": "Salvar resposta",
+      "backToAudio": "Voltar ao áudio",
       "recordingTitle": "Gravando…",
       "recordingHint": "Toque para parar quando terminar.",
       "preparingTranscription": "Preparando a transcri\u00e7\u00e3o\u2026",
+      "preparingAudio": "Preparando o áudio para você…",
+      "audioUnsupportedTitle": "Respostas por áudio indisponíveis",
+      "audioUnsupportedHint": "Seu navegador não oferece suporte aos recursos necessários para transcrever áudio. Responda por texto.",
+      "finalizingTitle": "Finalizando a transcrição…",
+      "finalizingHint": "Aguarde um instante para salvar sua resposta completa.",
       "liveTranscriptTitle": "Transcrição ao vivo",
       "liveTranscriptHint": "O que você disser aparecerá aqui…",
       "editTranscriptTitle": "Revise sua resposta antes de enviar",
       "editTranscriptHint": "Você pode corrigir qualquer palavra reconhecida incorretamente.",
       "readyTitle": "Gravação pronta",
       "readyHint": "Você pode ouvir ou regravar se quiser.",
+      "textReadyTitle": "Resposta em texto pronta",
+      "textReadyHint": "Você pode revisar ou excluir sua resposta.",
+      "editTextAnswerTitle": "Revise sua resposta",
+      "editTextAnswerHint": "Você pode ajustar sua resposta antes de enviá-la.",
       "play": "Reproduzir",
       "pause": "Pausar",
       "reRecord": "Regravar",
       "delete": "Excluir gravação",
+      "deleteTextAnswer": "Excluir resposta",
       "start": "Gravar",
       "stop": "Parar"
     },
@@ -133,7 +160,25 @@
   "error": {
     "title": "Algo deu errado",
     "body": "Não conseguimos concluir essa ação. Você pode tentar novamente.",
-    "retry": "Tentar novamente"
+    "retry": "Tentar novamente",
+    "webhook": {
+      "notConfigured": "O serviço de perguntas não está configurado. Avise a equipe responsável.",
+      "connection": "Não foi possível conectar ao serviço de perguntas. Tente em uma janela anônima ou em outro navegador e verifique se há VPN ou bloqueadores ativos.",
+      "timeout": "O serviço demorou demais para responder. Verifique sua conexão e tente novamente.",
+      "accessDenied": "Você não tem permissão para acessar o serviço de perguntas. Avise a equipe responsável.",
+      "notFound": "Não encontramos o serviço de perguntas. Avise a equipe responsável.",
+      "fileTooLarge": "O arquivo é grande demais para processar. Tente um PDF menor.",
+      "tooManyRequests": "Há muitas solicitações neste momento. Aguarde alguns minutos e tente novamente.",
+      "aiUnavailable": "O serviço de IA está temporariamente indisponível. Aguarde alguns minutos e tente novamente.",
+      "server": "O serviço de perguntas teve um problema temporário. Aguarde alguns minutos e tente novamente.",
+      "requestFailed": "Não foi possível processar a solicitação (erro {status}). Tente novamente.",
+      "invalidResponse": "O serviço respondeu em um formato inesperado. Avise a equipe responsável.",
+      "invalidPdf": "O arquivo selecionado não é um PDF válido. Tente outro arquivo.",
+      "missingQuestions": "O serviço não gerou perguntas. Tente novamente.",
+      "missingChapter": "Não foi possível preparar o material para corrigir as respostas. Gere o quiz novamente.",
+      "invalidEvaluation": "O serviço retornou uma avaliação em formato inválido. Tente novamente.",
+      "missingEvaluation": "O serviço não retornou a correção das respostas. Tente novamente."
+    }
   },
   "common": {
     "back": "Voltar"
