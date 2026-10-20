@@ -92,6 +92,10 @@ function startNewQuiz() {
             <p class="font-semibold text-lagoon/70 dark:text-cream-soft/70">{{ t('result.expectedAnswer') }}</p>
             <p class="mt-1 text-lagoon/60 dark:text-cream-soft/60">{{ q.expectedAnswer }}</p>
           </div>
+          <div v-if="q.mainError" class="rounded-lg bg-warning-bg p-3 dark:bg-warning-bgDark">
+            <p class="font-semibold text-lagoon/70 dark:text-cream-soft/70">{{ t('result.mainError') }}</p>
+            <p class="mt-1 text-lagoon/60 dark:text-cream-soft/60">{{ q.mainError }}</p>
+          </div>
           <div class="rounded-lg bg-sage/10 p-3 dark:bg-sage/10">
             <p class="font-semibold text-sage-dark dark:text-sage-light">{{ t('result.feedback') }}</p>
             <p class="mt-1 text-lagoon/70 dark:text-cream-soft/70">{{ q.feedback }}</p>

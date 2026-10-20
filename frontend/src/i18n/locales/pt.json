@@ -146,6 +146,7 @@
     "yourAnswer": "Sua resposta",
     "noAnswer": "Você não respondeu esta pergunta",
     "expectedAnswer": "Resposta esperada",
+    "mainError": "Principal ponto a revisar",
     "feedback": "Comentário",
     "timeSpent": "Tempo utilizado",
     "newQuiz": "Iniciar novo quiz",

@@ -186,6 +186,8 @@ export const useQuizStore = defineStore('quiz', {
             maxScore: answer?.maxScore ?? 10,
             durationSeconds: recording?.elapsed ?? 0,
             studentAnswerLabel: studentAnswer || 'Sem resposta',
+            classification: answer?.classification ?? '',
+            mainError: answer?.mainError ?? '',
             expectedAnswer: answer?.expectedAnswer ?? '',
             feedback: answer?.feedback ?? '',
           }
