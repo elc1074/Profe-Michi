@@ -147,6 +147,7 @@
     "noAnswer": "You didn't answer this question",
     "expectedAnswer": "Expected answer",
     "mainError": "Main point to review",
+    "whatToReview": "What to review?",
     "feedback": "Feedback",
     "timeSpent": "Time spent",
     "newQuiz": "Start a new quiz",

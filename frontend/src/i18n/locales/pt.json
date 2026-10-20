@@ -147,6 +147,7 @@
     "noAnswer": "Você não respondeu esta pergunta",
     "expectedAnswer": "Resposta esperada",
     "mainError": "Principal ponto a revisar",
+    "whatToReview": "O que revisar?",
     "feedback": "Comentário",
     "timeSpent": "Tempo utilizado",
     "newQuiz": "Iniciar novo quiz",
