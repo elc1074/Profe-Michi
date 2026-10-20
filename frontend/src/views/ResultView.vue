@@ -82,19 +82,41 @@ function startNewQuiz() {
         </div>
 
         <div class="mt-4 space-y-3 text-sm">
-          <div class="rounded-lg bg-cream-soft p-3 dark:bg-lagoon-soft/50">
-            <p class="font-semibold text-lagoon/70 dark:text-cream-soft/70">{{ t('result.yourAnswer') }}</p>
-            <p class="mt-1 text-lagoon/60 dark:text-cream-soft/60">
+          <div
+            class="rounded-lg p-3"
+            :class="{
+              'border border-[#B7CDA5] bg-[#F1F7EC] dark:border-success/50 dark:bg-success-bgDark': q.status === 'correct',
+              'border border-[#E9B7BB] bg-[#FDF0F0] dark:border-error/30 dark:bg-error-bgDark': q.status === 'incorrect',
+              'bg-cream-soft dark:bg-lagoon-soft/50': q.status === 'unanswered',
+            }"
+          >
+            <p
+              class="font-semibold"
+              :class="{
+                'text-[#42652D] dark:text-[#b5d495]': q.status === 'correct',
+                'text-[#9C3F49] dark:text-blush': q.status === 'incorrect',
+                'text-lagoon/70 dark:text-cream-soft/70': q.status === 'unanswered',
+              }"
+            >{{ t('result.yourAnswer') }}</p>
+            <p
+              class="mt-1"
+              :class="{
+                'text-[#42652D] dark:text-[#b5d495]': q.status === 'correct',
+                'text-[#9C3F49] dark:text-blush': q.status === 'incorrect',
+                'text-lagoon/70 dark:text-cream-soft/70': q.status === 'unanswered',
+              }"
+            >
               {{ q.status === 'unanswered' ? t('result.noAnswer') : q.studentAnswerLabel }}
             </p>
           </div>
-          <div class="rounded-lg bg-cream-soft p-3 dark:bg-lagoon-soft/50">
-            <p class="font-semibold text-lagoon/70 dark:text-cream-soft/70">{{ t('result.expectedAnswer') }}</p>
-            <p class="mt-1 text-lagoon/60 dark:text-cream-soft/60">{{ q.expectedAnswer }}</p>
+          <div class="rounded-lg bg-[#F5F7FA] p-3 dark:bg-lagoon-soft/50">
+            <p class="font-semibold text-[#526C78] dark:text-sage-light">{{ t('result.expectedAnswer') }}</p>
+            <p class="mt-1 text-lagoon/70 dark:text-cream-soft/70">{{ q.expectedAnswer }}</p>
           </div>
-          <div class="rounded-lg bg-sage/10 p-3 dark:bg-sage/10">
-            <p class="font-semibold text-sage-dark dark:text-sage-light">{{ t('result.feedback') }}</p>
-            <p class="mt-1 text-lagoon/70 dark:text-cream-soft/70">{{ q.feedback }}</p>
+          <div v-if="q.status !== 'correct' && (q.mainError || q.feedback)" class="rounded-lg bg-[#FFF6E5] p-3 dark:bg-warning-bgDark">
+            <p class="font-semibold text-[#7A5622] dark:text-warning">{{ t('result.whatToReview') }}</p>
+            <p v-if="q.mainError" class="mt-1 text-lagoon/60 dark:text-cream-soft/60">{{ q.mainError }}</p>
+            <p v-if="q.feedback && q.feedback !== q.mainError" :class="q.mainError ? 'mt-2' : 'mt-1'" class="text-lagoon/60 dark:text-cream-soft/60">{{ q.feedback }}</p>
           </div>
         </div>
       </details>

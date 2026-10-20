@@ -53,6 +53,8 @@ function normalizarAvaliacao(resposta) {
       questionId: item.questionId ?? item.id ?? indice + 1,
       score: Number(item.score) || 0,
       maxScore: Number(item.maxScore ?? item.max_score) || 10,
+      classification: item.classification ?? '',
+      mainError: item.mainError ?? item.main_error ?? '',
       expectedAnswer: item.expectedAnswer ?? item.expected_answer ?? '',
       feedback: item.feedback ?? '',
     })),
