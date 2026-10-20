@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, onBeforeUnmount } from 'vue'
+import { computed, onMounted, onBeforeUnmount, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { useQuizStore } from '../stores/quiz'
@@ -11,6 +11,7 @@ import UnansweredDialog from '../components/UnansweredDialog.vue'
 const { t } = useI18n()
 const router = useRouter()
 const quiz = useQuizStore()
+const audioPreparing = ref(false)
 
 let ticker = null
 
@@ -86,6 +87,7 @@ function reviewFirstUnanswered() {
           @delete="quiz.deleteRecording(activeQuestion.id)"
           @update-transcript="quiz.updateTranscript(activeQuestion.id, $event)"
           @submit-text="quiz.submitTextAnswer(activeQuestion.id, $event)"
+          @start-text-timing="quiz.startTextTiming(activeQuestion.id)"
         />
       </div>
     </section>

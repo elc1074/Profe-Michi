@@ -12,7 +12,9 @@ const { t } = useI18n()
 
 function stateFor(index, id) {
   if (index === props.currentIndex) return 'current'
-  return props.recordings[id]?.status === 'recorded' ? 'answered' : 'unanswered'
+  const recording = props.recordings[id]
+  const answer = recording?.mode === 'text' ? recording.textAnswer : recording?.transcript
+  return answer?.trim() ? 'answered' : 'unanswered'
 }
 </script>
 

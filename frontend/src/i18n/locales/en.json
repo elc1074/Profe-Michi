@@ -1,7 +1,7 @@
 {
   "app": {
     "name": "Profe Michi",
-    "tagline": "Review vet anatomy with your voice"
+    "tagline": "Review vet anatomy by text or voice"
   },
   "nav": {
     "home": "Home",
@@ -12,14 +12,14 @@
     "theme": "Toggle theme"
   },
   "home": {
-    "title": "Study anatomy by answering out loud",
-    "subtitle": "Upload your course material, answer by speaking, and get gentle feedback in minutes.",
+    "title": "Study anatomy by answering with text or voice",
+    "subtitle": "Upload your course material, answer by typing or speaking, and get gentle feedback in minutes.",
     "cta": "New quiz",
     "stepsTitle": "How it works",
     "step1Title": "1. Upload your PDF",
     "step1Body": "Share the notes or guide you want to review.",
-    "step2Title": "2. Answer by voice",
-    "step2Body": "Explain each answer out loud, at your own pace.",
+    "step2Title": "2. Answer with text or audio",
+    "step2Body": "Type your answer or explain it out loud, at your own pace.",
     "step3Title": "3. Get feedback",
     "step3Body": "Profe Michi grades it and shares tips to improve.",
     "futureTitle": "Coming soon",
@@ -69,6 +69,13 @@
       "unanswered": "Pending"
     },
     "timer": "Time on this question",
+    "responseMode": {
+      "label": "Response method",
+      "text": "Text",
+      "audio": "Audio",
+      "textLabel": "Your answer",
+      "textPlaceholder": "Type your answer here..."
+    },
     "recorder": {
       "idleTitle": "Tap to record your answer",
       "idleHint": "Explain the answer in your own words, no rush.",
@@ -126,7 +133,7 @@
   },
   "grading": {
     "title": "Grading your answers",
-    "subtitle": "Profe Michi is listening and evaluating each answer.",
+    "subtitle": "Profe Michi is evaluating each answer.",
     "note": "This is a simulation: nothing is sent to a real server yet."
   },
   "result": {
