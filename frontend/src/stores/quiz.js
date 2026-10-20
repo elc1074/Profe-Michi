@@ -134,7 +134,9 @@ export const useQuizStore = defineStore('quiz', {
     },
     updateTranscript(id, transcript) {
       if (this.recordings[id]?.status !== 'recorded') return
-      this.recordings[id].transcript = transcript
+      const recording = this.recordings[id]
+      recording.transcript = transcript
+      if (recording.mode === 'text') recording.textAnswer = transcript
     },
     submitTextAnswer(id, transcript) {
       this.recordings[id] = {
@@ -152,6 +154,8 @@ export const useQuizStore = defineStore('quiz', {
       this.recordings[id] = {
         ...this.recordings[id],
         status: 'idle',
+        mode: 'text',
+        textAnswer: '',
         transcript: '',
         audioUrl: undefined,
         blob: undefined,

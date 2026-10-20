@@ -69,7 +69,6 @@ async function startRecording() {
   error.value = ''
   liveTranscript.value = ''
   preparing.value = true
-  emit('busy', true)
   try {
     transcription = new KrokoLiveTranscription({
       language: locale.value,
