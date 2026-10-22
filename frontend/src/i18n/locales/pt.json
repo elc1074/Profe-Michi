@@ -6,8 +6,10 @@
   "nav": {
     "home": "Início",
     "newQuiz": "Novo quiz",
-    "profile": "Perfil",
+    "profile": "Entrar",
+    "exit": "Sair",
     "history": "Histórico",
+    "statistics": "Estatísticas",
     "soon": "Em breve",
     "theme": "Alternar tema"
   },
@@ -23,7 +25,9 @@
     "step3Title": "3. Receba feedback",
     "step3Body": "Profe Michi corrige e traz comentários para você evoluir.",
     "futureTitle": "Em breve",
-    "futureBody": "Login, perfil e histórico de quizzes chegam nas próximas versões."
+    "futureBody": "Login, perfil e histórico de quizzes chegam nas próximas versões.",
+    "visitorTitle":"Acesse como visitante ou crie um perfil",
+    "visitorBody": "Ao entrar em seu perfil ou criá-lo, seu histórico de questionários e estatísticas serão salvos. Se não quiser, Profe Michi deixa você criar questionários, mas não serão salvos."
   },
   "upload": {
     "title": "Envie o material de estudo",
@@ -184,5 +188,14 @@
   },
   "common": {
     "back": "Voltar"
+  },
+  "auth": {
+    "emailLabel": "E-mail",
+    "passwordLabel": "Senha",
+    "submit": "Entrar",
+    "submitting": "Entrando…",
+    "missingFields": "Preencha seu e-mail e senha.",
+    "genericError": "Não conseguimos entrar. Tente novamente.",
+    "visitor": "Ou entrar como visitante"
   }
 }

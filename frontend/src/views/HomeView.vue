@@ -65,6 +65,13 @@ const steps = [
       </div>
     </section>
 
+    <section class="mt-16">
+      <h2 class="font-display text-xl font-semibold text-lagoon dark:text-cream-soft">{{ t('home.visitorTitle') }}</h2>
+      <div class="mt-5 sm:grid-cols-3">
+        <p class="mt-1 text-sm text-lagoon/65 dark:text-cream-soft/65">{{ t('home.visitorBody') }}</p>
+      </div>
+    </section>
+
     <section class="mt-10 rounded-xl2 border border-dashed border-lagoon/20 p-5 dark:border-cream-soft/20">
       <p class="font-display text-sm font-semibold text-lagoon/70 dark:text-cream-soft/70">{{ t('home.futureTitle') }}</p>
       <p class="mt-1 text-sm text-lagoon/55 dark:text-cream-soft/55">{{ t('home.futureBody') }}</p>

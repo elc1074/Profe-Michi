@@ -1,10 +1,12 @@
 <script setup>
+import { useAuthStore } from '@/stores/auth'
 import { useI18n } from 'vue-i18n'
 import { RouterLink } from 'vue-router'
 import MascotLogo from './MascotLogo.vue'
 import ThemeToggle from './ThemeToggle.vue'
 import LocaleSwitcher from './LocaleSwitcher.vue'
 
+const authStore = useAuthStore()
 const { t } = useI18n()
 </script>
 
@@ -25,18 +27,27 @@ const { t } = useI18n()
         >
           {{ t('nav.home') }}
         </RouterLink>
-        <span
-          class="cursor-not-allowed rounded-full px-4 py-2 text-sm font-semibold text-lagoon/30 dark:text-cream-soft/30"
-          :title="t('nav.soon')"
+        <RouterLink
+          :to="authStore.isAuthenticated ? '/' : '/login'"
+          class="rounded-full px-4 py-2 text-sm font-semibold text-lagoon/80 transition hover:bg-lagoon/5 dark:text-cream-soft/80 dark:hover:bg-cream-soft/10"
+          active-class="!bg-blush/60 !text-lagoon dark:!bg-rosewood/30 dark:!text-cream-soft"
         >
-          {{ t('nav.profile') }}
-        </span>
-        <span
-          class="cursor-not-allowed rounded-full px-4 py-2 text-sm font-semibold text-lagoon/30 dark:text-cream-soft/30"
-          :title="t('nav.soon')"
+         {{ authStore.isAuthenticated ? t('nav.exit') : t('nav.profile') }}
+        </RouterLink>
+        <RouterLink
+          to="/"
+          class="rounded-full px-4 py-2 text-sm font-semibold text-lagoon/80 transition hover:bg-lagoon/5 dark:text-cream-soft/80 dark:hover:bg-cream-soft/10"
+          active-class="!bg-blush/60 !text-lagoon dark:!bg-rosewood/30 dark:!text-cream-soft"
         >
           {{ t('nav.history') }}
-        </span>
+        </RouterLink>
+        <RouterLink
+          to="/"
+          class="rounded-full px-4 py-2 text-sm font-semibold text-lagoon/80 transition hover:bg-lagoon/5 dark:text-cream-soft/80 dark:hover:bg-cream-soft/10"
+          active-class="!bg-blush/60 !text-lagoon dark:!bg-rosewood/30 dark:!text-cream-soft"
+        >
+          {{ t('nav.statistics') }}
+        </RouterLink>
       </nav>
 
       <div class="flex items-center gap-2">

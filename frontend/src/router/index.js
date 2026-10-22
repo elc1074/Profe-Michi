@@ -19,6 +19,11 @@ const router = createRouter({
     { path: '/corrigindo', name: 'grading', component: GradingView },
     { path: '/resultado', name: 'result', component: ResultView },
     { path: '/teste-dialog', name: 'audio-dialog-preview', component: AudioDialogPreview },
+    { path: '/login', name: 'login', component: () => import('@/views/LoginView.vue') },
+    /*
+    { path: '/historico', name: 'historico', component: () => import('@/views/HistoricoView.vue') },
+    { path: '/estatisticas', name: 'estatisticas', component: () => import('@/views/EstatisticasView.vue') }
+     */
   ],
 
   scrollBehavior() {
