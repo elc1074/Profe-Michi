@@ -6,8 +6,8 @@
   "nav": {
     "home": "Início",
     "newQuiz": "Novo quiz",
-    "profile": "Entrar",
-    "exit": "Sair",
+    "start": "Entrar",
+    "profile": "Perfil",
     "history": "Histórico",
     "statistics": "Estatísticas",
     "soon": "Em breve",
@@ -190,12 +190,19 @@
     "back": "Voltar"
   },
   "auth": {
+    "nameLabel": "Nome",
     "emailLabel": "E-mail",
     "passwordLabel": "Senha",
+    "confirmPasswordLabel": "Confirmar senha",
     "submit": "Entrar",
     "submitting": "Entrando…",
+    "createAccount": "Criar conta",
     "missingFields": "Preencha seu e-mail e senha.",
     "genericError": "Não conseguimos entrar. Tente novamente.",
-    "visitor": "Ou entrar como visitante"
+    "options": "Ou utilize uma das opções abaixo",
+    "visitor": "Entrar como visitante",
+    "google": "Entrar com Google",
+    "existingAccount": "Já possui uma conta? Faça login",
+    "newAccount": "Não tem uma conta? Crie uma aqui"
   }
 }

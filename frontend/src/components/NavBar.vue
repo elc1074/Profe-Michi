@@ -32,7 +32,7 @@ const { t } = useI18n()
           class="rounded-full px-4 py-2 text-sm font-semibold text-lagoon/80 transition hover:bg-lagoon/5 dark:text-cream-soft/80 dark:hover:bg-cream-soft/10"
           active-class="!bg-blush/60 !text-lagoon dark:!bg-rosewood/30 dark:!text-cream-soft"
         >
-         {{ authStore.isAuthenticated ? t('nav.exit') : t('nav.profile') }}
+         {{ authStore.isAuthenticated ? t('nav.profile') : t('nav.start') }}
         </RouterLink>
         <RouterLink
           to="/"

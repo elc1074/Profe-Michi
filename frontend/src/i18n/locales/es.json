@@ -6,8 +6,8 @@
   "nav": {
     "home": "Inicio",
     "newQuiz": "Nuevo quiz",
-    "profile": "Entrar",
-    "exit": "Salir",
+    "start": "Entrar",
+    "profile": "Perfil",
     "history": "Historial",
     "statistics": "Estadísticas",
     "soon": "Próximamente",
@@ -190,12 +190,19 @@
     "back": "Volver"
   },
   "auth": {
+    "nameLabel": "Nombre",
     "emailLabel": "Correo electrónico",
     "passwordLabel": "Contraseña",
+    "confirmPasswordLabel": "Confirmar contraseña",
     "submit": "Iniciar",
     "submitting": "Iniciando…",
+    "createAccount": "Crear cuenta",
     "missingFields": "Completa tu correo y contraseña.",
     "genericError": "No pudimos iniciar sesión. Intenta de nuevo.",
-    "visitor": "O iniciar sesión como visitante"
+    "options": "O utilice una de las opciones abajo",
+    "visitor": "Iniciar sesión como visitante",
+    "google": "Iniciar sesión com Google",
+    "existingAccount": "¿Ya tienes una cuenta? Inicia sesión",
+    "newAccount": "¿No tienes una cuenta? Crea una aquí"
   }
 }
