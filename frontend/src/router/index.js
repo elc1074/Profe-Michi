@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
 
 import HomeView from '@/views/HomeView.vue'
 import UploadView from '@/views/UploadView.vue'
@@ -24,6 +25,23 @@ const router = createRouter({
   scrollBehavior() {
     return { top: 0 }
   },
+})
+
+// Rotas com meta.requiresAuth vão pedir login; 
+// meta.guestOnly redireciona quem já entrou
+router.beforeEach(async (to) => {
+  if (!to.meta.requiresAuth && !to.meta.guestOnly) return true
+
+  const auth = useAuthStore()
+  await auth.init()
+
+  if (to.meta.requiresAuth && !auth.isAuthenticated) {
+    return { name: 'login', query: { redirect: to.fullPath } }
+  }
+  if (to.meta.guestOnly && auth.isAuthenticated) {
+    return { name: 'home' }
+  }
+  return true
 })
 
 export default router

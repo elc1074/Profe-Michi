@@ -180,6 +180,17 @@
       "missingChapter": "Não foi possível preparar o material para corrigir as respostas. Gere o quiz novamente.",
       "invalidEvaluation": "O serviço retornou uma avaliação em formato inválido. Tente novamente.",
       "missingEvaluation": "O serviço não retornou a correção das respostas. Tente novamente."
+    },
+    "auth": {
+      "notConfigured": "O login não está configurado. Avise a equipe responsável.",
+      "invalidCredentials": "E-mail ou senha incorretos.",
+      "emailNotConfirmed": "Confirme seu e-mail pelo link que enviamos antes de entrar.",
+      "userAlreadyExists": "Já existe uma conta com este e-mail.",
+      "weakPassword": "A senha é muito fraca. Use pelo menos 6 caracteres.",
+      "invalidEmail": "Informe um e-mail válido.",
+      "rateLimited": "Muitas tentativas. Aguarde alguns minutos e tente novamente.",
+      "connection": "Não foi possível conectar ao serviço de login. Verifique sua conexão e tente novamente.",
+      "generic": "Não conseguimos entrar. Tente novamente."
     }
   },
   "common": {

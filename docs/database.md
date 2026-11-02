@@ -20,6 +20,28 @@ senha do banco ou credenciais do n8n.
 - A trigger cria `profiles` automaticamente; não inserir perfil manualmente.
 - Perfil: ler/atualizar apenas `name` em `profiles`.
 
+### Uso no frontend
+
+- Cliente: `src/services/supabase.js` (é `null` se as variáveis `VITE_SUPABASE_*` não estiverem definidas).
+- Chamadas ao Supabase Auth com mensagens de erro traduzidas: `src/services/auth.js`.
+- Estado da sessão: store `useAuthStore` (`src/stores/auth.js`), inicializada em `main.js`.
+
+```js
+const auth = useAuthStore()
+
+await auth.login({ email, password })
+const { needsEmailConfirmation } = await auth.register({ name, email, password })
+await auth.logout()
+
+auth.isAuthenticated 
+auth.user            
+auth.displayName     
+```
+
+As funções lançam `Error` com mensagem já traduzida, pronta para exibir ao estudante.
+Rotas com `meta: { requiresAuth: true }` redirecionam para `login` (com `?redirect=`),
+e `meta: { guestOnly: true }` redireciona usuários já autenticados para a home.
+
 ## Tabelas
 
 ### `profiles`

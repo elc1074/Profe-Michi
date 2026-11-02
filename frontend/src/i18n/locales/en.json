@@ -180,6 +180,17 @@
       "missingChapter": "We couldn't prepare the material to grade the answers. Generate the quiz again.",
       "invalidEvaluation": "The service returned an evaluation in an invalid format. Try again.",
       "missingEvaluation": "The service didn't return the answer grading. Try again."
+    },
+    "auth": {
+      "notConfigured": "Sign-in is not configured. Please contact the team responsible.",
+      "invalidCredentials": "Incorrect email or password.",
+      "emailNotConfirmed": "Confirm your email using the link we sent before signing in.",
+      "userAlreadyExists": "An account with this email already exists.",
+      "weakPassword": "The password is too weak. Use at least 6 characters.",
+      "invalidEmail": "Enter a valid email address.",
+      "rateLimited": "Too many attempts. Wait a few minutes and try again.",
+      "connection": "We couldn't connect to the sign-in service. Check your connection and try again.",
+      "generic": "We couldn't sign you in. Try again."
     }
   },
   "common": {
