@@ -5,8 +5,8 @@
 No `frontend/.env` local:
 
 ```env
-VITE_SUPABASE_URL=https://SEU-PROJETO.supabase.co
-VITE_SUPABASE_ANON_KEY=SUA_CHAVE_PUBLICA
+NEXT_PUBLIC_SUPABASE_UR=https://SEU-PROJETO.supabase.co
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=SUA_CHAVE_PUBLICA
 VITE_N8N_QUIZ_URL=SUA_URL_DO_WEBHOOK
 ```
 
@@ -22,7 +22,7 @@ senha do banco ou credenciais do n8n.
 
 ### Uso no frontend
 
-- Cliente: `src/services/supabase.js` (é `null` se as variáveis `VITE_SUPABASE_*` não estiverem definidas).
+- Cliente: `src/services/supabase.js` (é `null` se as variáveis `NEXT_PUBLIC_SUPABASE_*` não estiverem definidas).
 - Chamadas ao Supabase Auth com mensagens de erro traduzidas: `src/services/auth.js`.
 - Estado da sessão: store `useAuthStore` (`src/stores/auth.js`), inicializada em `main.js`.
 

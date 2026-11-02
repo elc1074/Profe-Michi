@@ -44,3 +44,5 @@ __screenshots__/
 package-lock.json
 frontend/package-lock.json
 frontend/package-lock.json
+frontend/.env.example
+
