@@ -87,6 +87,31 @@ export async function criarConta({ name, email, password }) {
   }
 }
 
+export async function entrarComGoogle({ redirectTo }) {
+  const cliente = exigirSupabase()
+  // Redireciona o navegador para o Google; a sessão é lida da URL na volta.
+  return executar(() =>
+    cliente.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo },
+    }),
+  )
+}
+
+// Erros do OAuth voltam na URL (query ou hash) quando o login com o Google falha.
+export function lerErroOAuthDaUrl() {
+  const params = new URLSearchParams(window.location.search)
+  const hash = new URLSearchParams(window.location.hash.replace(/^#/, ''))
+  const erro = params.get('error') ?? hash.get('error')
+  if (!erro) return null
+
+  const descricao = params.get('error_description') ?? hash.get('error_description') ?? ''
+  console.error('Supabase OAuth failed', erro, descricao)
+  return erro === 'access_denied'
+    ? i18n.global.t('error.auth.oauthCancelled')
+    : i18n.global.t('error.auth.generic')
+}
+
 export async function sair() {
   if (!isSupabaseConfigured) return
   await executar(() => supabase.auth.signOut())

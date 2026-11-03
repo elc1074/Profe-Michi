@@ -6,8 +6,10 @@
   "nav": {
     "home": "Home",
     "newQuiz": "New quiz",
+    "start": "Sign in",
     "profile": "Profile",
     "history": "History",
+    "statistics": "Statistics",
     "soon": "Coming soon",
     "theme": "Toggle theme"
   },
@@ -23,7 +25,9 @@
     "step3Title": "3. Get feedback",
     "step3Body": "Profe Michi grades it and shares tips to improve.",
     "futureTitle": "Coming soon",
-    "futureBody": "Login, profile, and quiz history are on the way."
+    "futureBody": "Login, profile, and quiz history are on the way.",
+    "visitorTitle": "Continue as a guest or create a profile",
+    "visitorBody": "When you sign in or create a profile, your quiz history and statistics are saved. If you'd rather not, Profe Michi still lets you create quizzes, but they won't be saved."
   },
   "upload": {
     "title": "Upload your study material",
@@ -190,10 +194,30 @@
       "invalidEmail": "Enter a valid email address.",
       "rateLimited": "Too many attempts. Wait a few minutes and try again.",
       "connection": "We couldn't connect to the sign-in service. Check your connection and try again.",
-      "generic": "We couldn't sign you in. Try again."
+      "generic": "We couldn't sign you in. Try again.",
+      "oauthCancelled": "Google sign-in was cancelled."
     }
   },
   "common": {
     "back": "Back"
+  },
+  "auth": {
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "confirmPasswordLabel": "Confirm password",
+    "submit": "Sign in",
+    "submitting": "Signing in…",
+    "createAccount": "Create account",
+    "missingFields": "Enter your email and password.",
+    "passwordMismatch": "The passwords don't match.",
+    "checkEmail": "Account created! Confirm your email using the link we sent, then sign in.",
+    "genericError": "We couldn't sign you in. Try again.",
+    "options": "Or use one of the options below",
+    "visitor": "Continue as guest",
+    "google": "Sign in with Google",
+    "redirecting": "Opening Google…",
+    "existingAccount": "Already have an account? Sign in",
+    "newAccount": "Don't have an account? Create one here"
   }
 }

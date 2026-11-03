@@ -6,8 +6,10 @@
   "nav": {
     "home": "Início",
     "newQuiz": "Novo quiz",
+    "start": "Entrar",
     "profile": "Perfil",
     "history": "Histórico",
+    "statistics": "Estatísticas",
     "soon": "Em breve",
     "theme": "Alternar tema"
   },
@@ -23,7 +25,9 @@
     "step3Title": "3. Receba feedback",
     "step3Body": "Profe Michi corrige e traz comentários para você evoluir.",
     "futureTitle": "Em breve",
-    "futureBody": "Login, perfil e histórico de quizzes chegam nas próximas versões."
+    "futureBody": "Login, perfil e histórico de quizzes chegam nas próximas versões.",
+    "visitorTitle":"Acesse como visitante ou crie um perfil",
+    "visitorBody": "Ao entrar em seu perfil ou criá-lo, seu histórico de questionários e estatísticas serão salvos. Se não quiser, Profe Michi deixa você criar questionários, mas não serão salvos."
   },
   "upload": {
     "title": "Envie o material de estudo",
@@ -190,10 +194,30 @@
       "invalidEmail": "Informe um e-mail válido.",
       "rateLimited": "Muitas tentativas. Aguarde alguns minutos e tente novamente.",
       "connection": "Não foi possível conectar ao serviço de login. Verifique sua conexão e tente novamente.",
-      "generic": "Não conseguimos entrar. Tente novamente."
+      "generic": "Não conseguimos entrar. Tente novamente.",
+      "oauthCancelled": "Login com o Google cancelado."
     }
   },
   "common": {
     "back": "Voltar"
+  },
+  "auth": {
+    "nameLabel": "Nome",
+    "emailLabel": "E-mail",
+    "passwordLabel": "Senha",
+    "confirmPasswordLabel": "Confirmar senha",
+    "submit": "Entrar",
+    "submitting": "Entrando…",
+    "createAccount": "Criar conta",
+    "missingFields": "Preencha seu e-mail e senha.",
+    "passwordMismatch": "As senhas não coincidem.",
+    "checkEmail": "Conta criada! Confirme seu e-mail pelo link que enviamos e depois faça login.",
+    "genericError": "Não conseguimos entrar. Tente novamente.",
+    "options": "Ou utilize uma das opções abaixo",
+    "visitor": "Entrar como visitante",
+    "google": "Entrar com Google",
+    "redirecting": "Abrindo o Google…",
+    "existingAccount": "Já possui uma conta? Faça login",
+    "newAccount": "Não tem uma conta? Crie uma aqui"
   }
 }

@@ -6,8 +6,10 @@
   "nav": {
     "home": "Inicio",
     "newQuiz": "Nuevo quiz",
+    "start": "Entrar",
     "profile": "Perfil",
     "history": "Historial",
+    "statistics": "Estadísticas",
     "soon": "Próximamente",
     "theme": "Cambiar tema"
   },
@@ -23,7 +25,9 @@
     "step3Title": "3. Recibe feedback",
     "step3Body": "Profe Michi corrige y te da comentarios para mejorar.",
     "futureTitle": "Muy pronto",
-    "futureBody": "Inicio de sesión, perfil e historial de quizzes llegarán en próximas versiones."
+    "futureBody": "Inicio de sesión, perfil e historial de quizzes llegarán en próximas versiones.",
+    "visitorTitle":"Accede como visitante o crea un perfil",
+    "visitorBody": "Al acceder a tu perfil o crearlo, se guardarán tu historial de cuestionarios y tus estadísticas. Si no deseas hacerlo, Profe Michi te permite crear cuestionarios, pero estos no se guardarán."
   },
   "upload": {
     "title": "Sube el material de estudio",
@@ -190,10 +194,30 @@
       "invalidEmail": "Ingresa un correo válido.",
       "rateLimited": "Demasiados intentos. Espera unos minutos e inténtalo de nuevo.",
       "connection": "No pudimos conectarnos al servicio de inicio de sesión. Revisa tu conexión e inténtalo de nuevo.",
-      "generic": "No pudimos iniciar sesión. Inténtalo de nuevo."
+      "generic": "No pudimos iniciar sesión. Inténtalo de nuevo.",
+      "oauthCancelled": "Se canceló el inicio de sesión con Google."
     }
   },
   "common": {
     "back": "Volver"
+  },
+  "auth": {
+    "nameLabel": "Nombre",
+    "emailLabel": "Correo electrónico",
+    "passwordLabel": "Contraseña",
+    "confirmPasswordLabel": "Confirmar contraseña",
+    "submit": "Iniciar",
+    "submitting": "Iniciando…",
+    "createAccount": "Crear cuenta",
+    "missingFields": "Completa tu correo y contraseña.",
+    "passwordMismatch": "Las contraseñas no coinciden.",
+    "checkEmail": "¡Cuenta creada! Confirma tu correo con el enlace que te enviamos y luego inicia sesión.",
+    "genericError": "No pudimos iniciar sesión. Intenta de nuevo.",
+    "options": "O usa una de las opciones de abajo",
+    "visitor": "Iniciar sesión como visitante",
+    "google": "Iniciar sesión con Google",
+    "redirecting": "Abriendo Google…",
+    "existingAccount": "¿Ya tienes una cuenta? Inicia sesión",
+    "newAccount": "¿No tienes una cuenta? Crea una aquí"
   }
 }

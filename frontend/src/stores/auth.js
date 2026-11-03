@@ -4,17 +4,21 @@ import {
   buscarPerfil,
   criarConta,
   entrarComEmail,
+  entrarComGoogle,
   obterSessao,
   observarSessao,
   sair,
 } from '@/services/auth'
 import { isSupabaseConfigured } from '@/services/supabase'
 
+const GUEST_KEY = 'profe-michi-guest'
+
 export const useAuthStore = defineStore('auth', () => {
   const session = ref(null)
   const user = ref(null)
   const profile = ref(null)
   const ready = ref(false)
+  const isGuest = ref(sessionStorage.getItem(GUEST_KEY) === '1')
 
   const isAuthenticated = computed(() => !!user.value)
   const displayName = computed(
@@ -39,6 +43,7 @@ export const useAuthStore = defineStore('auth', () => {
     const mudouUsuario = novaSessao?.user?.id !== user.value?.id
     session.value = novaSessao
     user.value = novaSessao?.user ?? null
+    if (user.value) definirVisitante(false)
     if (mudouUsuario) carregarPerfil()
   }
 
@@ -56,6 +61,22 @@ export const useAuthStore = defineStore('auth', () => {
     })()
 
     return initPromise
+  }
+
+  function definirVisitante(valor) {
+    isGuest.value = valor
+    if (valor) sessionStorage.setItem(GUEST_KEY, '1')
+    else sessionStorage.removeItem(GUEST_KEY)
+  }
+
+  // Visitante usa o site sem conta
+  // nada é salvo no banco
+  function continueAsGuest() {
+    definirVisitante(true)
+  }
+
+  async function loginWithGoogle({ redirectTo }) {
+    await entrarComGoogle({ redirectTo })
   }
 
   async function login({ email, password }) {
@@ -83,11 +104,14 @@ export const useAuthStore = defineStore('auth', () => {
     user,
     profile,
     ready,
+    isGuest,
     isAuthenticated,
     displayName,
     isConfigured: isSupabaseConfigured,
     init,
     login,
+    loginWithGoogle,
+    continueAsGuest,
     register,
     logout,
     refreshProfile: carregarPerfil,
