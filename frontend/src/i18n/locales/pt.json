@@ -13,6 +13,16 @@
     "soon": "Em breve",
     "theme": "Alternar tema"
   },
+  "profile": {
+    "title": "Seu perfil",
+    "subtitle": "Confira as informações da sua conta.",
+    "name": "Nome",
+    "email": "E-mail",
+    "password": "Senha",
+    "notProvided": "Não informado",
+    "logout": "Sair da conta",
+    "leaving": "Saindo…"
+  },
   "home": {
     "title": "Estude anatomia respondendo por texto ou voz",
     "subtitle": "Envie o material da sua disciplina, responda as perguntas escrevendo ou falando e receba uma correção acolhedora em minutos.",

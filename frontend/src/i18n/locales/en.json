@@ -13,6 +13,16 @@
     "soon": "Coming soon",
     "theme": "Toggle theme"
   },
+  "profile": {
+    "title": "Your profile",
+    "subtitle": "Review your account information.",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "notProvided": "Not provided",
+    "logout": "Sign out",
+    "leaving": "Signing out…"
+  },
   "home": {
     "title": "Study anatomy by answering with text or voice",
     "subtitle": "Upload your course material, answer by typing or speaking, and get gentle feedback in minutes.",

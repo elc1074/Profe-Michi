@@ -21,6 +21,7 @@ const router = createRouter({
     { path: '/resultado', name: 'result', component: ResultView },
     { path: '/teste-dialog', name: 'audio-dialog-preview', component: AudioDialogPreview },
     { path: '/login', name: 'login', component: () => import('@/views/LoginView.vue') },
+    { path: '/perfil', name: 'profile', component: () => import('@/views/ProfileView.vue'), meta: { requiresAuth: true } },
     /*
     { path: '/historico', name: 'historico', component: () => import('@/views/HistoricoView.vue') },
     { path: '/estatisticas', name: 'estatisticas', component: () => import('@/views/EstatisticasView.vue') }

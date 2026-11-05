@@ -13,6 +13,16 @@
     "soon": "Próximamente",
     "theme": "Cambiar tema"
   },
+  "profile": {
+    "title": "Tu perfil",
+    "subtitle": "Revisa la información de tu cuenta.",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "notProvided": "No informado",
+    "logout": "Cerrar sesión",
+    "leaving": "Cerrando sesión…"
+  },
   "home": {
     "title": "Estudia anatomía respondiendo por texto o voz",
     "subtitle": "Sube el material de tu ramo, responde las preguntas escribiendo o hablando y recibe una corrección amable en minutos.",
