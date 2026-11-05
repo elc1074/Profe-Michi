@@ -7,7 +7,6 @@ import GeneratingView from '@/views/GeneratingView.vue'
 import QuizView from '@/views/QuizView.vue'
 import GradingView from '@/views/GradingView.vue'
 import ResultView from '@/views/ResultView.vue'
-import AudioDialogPreview from '@/views/AudioDialogPreviewView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,7 +18,6 @@ const router = createRouter({
     { path: '/quiz', name: 'quiz', component: QuizView },
     { path: '/corrigindo', name: 'grading', component: GradingView },
     { path: '/resultado', name: 'result', component: ResultView },
-    { path: '/teste-dialog', name: 'audio-dialog-preview', component: AudioDialogPreview },
     { path: '/login', name: 'login', component: () => import('@/views/LoginView.vue') },
     { path: '/perfil', name: 'profile', component: () => import('@/views/ProfileView.vue'), meta: { requiresAuth: true } },
     /*

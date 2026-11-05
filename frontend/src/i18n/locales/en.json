@@ -21,7 +21,17 @@
     "password": "Password",
     "notProvided": "Not provided",
     "logout": "Sign out",
-    "leaving": "Signing out…"
+    "leaving": "Signing out…",
+    "deleteAccount": "Delete account",
+    "deleteConfirmationTitle": "Delete account",
+    "deleteConfirmationMessage": "If you want to delete all the data in your account, confirm below.",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "deletionInProgress": "Deleting your data",
+    "deletionCompleted": "Your profile information has been deleted.",
+    "deletionFollowup": "But Profe Michi is still available to study with you! You can create a new account or access as a visitor.",
+    "mascotAlt": "Profe Michi mascot",
+    "close": "Close"
   },
   "home": {
     "title": "Study anatomy by answering with text or voice",
@@ -34,8 +44,6 @@
     "step2Body": "Type your answer or explain it out loud, at your own pace.",
     "step3Title": "3. Get feedback",
     "step3Body": "Profe Michi grades it and shares tips to improve.",
-    "futureTitle": "Coming soon",
-    "futureBody": "Login, profile, and quiz history are on the way.",
     "visitorTitle": "Continue as a guest or create a profile",
     "visitorBody": "When you sign in or create a profile, your quiz history and statistics are saved. If you'd rather not, Profe Michi still lets you create quizzes, but they won't be saved."
   },

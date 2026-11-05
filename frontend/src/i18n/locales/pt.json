@@ -21,7 +21,17 @@
     "password": "Senha",
     "notProvided": "Não informado",
     "logout": "Sair da conta",
-    "leaving": "Saindo…"
+    "leaving": "Saindo…",
+    "deleteAccount": "Excluir conta",
+    "deleteConfirmationTitle": "Excluir conta",
+    "deleteConfirmationMessage": "Se você deseja apagar todos os dados da sua conta, confirme abaixo.",
+    "confirm": "Confirmar",
+    "cancel": "Cancelar",
+    "deletionInProgress": "Apagando os seus dados",
+    "deletionCompleted": "Suas informações de perfil foram apagadas.",
+    "deletionFollowup": "Mas o Profe Michi ainda está disponível para estudar contigo! Você pode criar uma nova conta ou acessar como visitante.",
+    "mascotAlt": "Mascote Profe Michi",
+    "close": "Fechar"
   },
   "home": {
     "title": "Estude anatomia respondendo por texto ou voz",
@@ -34,8 +44,6 @@
     "step2Body": "Escreva sua resposta ou explique falando, sem pressa.",
     "step3Title": "3. Receba feedback",
     "step3Body": "Profe Michi corrige e traz comentários para você evoluir.",
-    "futureTitle": "Em breve",
-    "futureBody": "Login, perfil e histórico de quizzes chegam nas próximas versões.",
     "visitorTitle":"Acesse como visitante ou crie um perfil",
     "visitorBody": "Ao entrar em seu perfil ou criá-lo, seu histórico de questionários e estatísticas serão salvos. Se não quiser, Profe Michi deixa você criar questionários, mas não serão salvos."
   },

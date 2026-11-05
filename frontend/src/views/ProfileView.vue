@@ -3,11 +3,15 @@ import { computed, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
+import { useAccountDeletionStore } from '@/stores/accountDeletion'
 
 const { t } = useI18n()
 const router = useRouter()
 const auth = useAuthStore()
+const accountDeletion = useAccountDeletionStore()
+const emit = defineEmits(['delete-account'])
 const leaving = ref(false)
+const showDeleteConfirmation = ref(false)
 
 const name = computed(() => auth.displayName || t('profile.notProvided'))
 const email = computed(() => auth.user?.email || t('profile.notProvided'))
@@ -22,6 +26,13 @@ async function logout() {
   } finally {
     leaving.value = false
   }
+}
+
+async function confirmAccountDeletion() {
+  accountDeletion.start()
+  emit('delete-account')
+  showDeleteConfirmation.value = false
+  await router.replace({ name: 'home' })
 }
 </script>
 
@@ -53,6 +64,26 @@ async function logout() {
         </dl>
         <div class="border-t border-lagoon/10 p-5 dark:border-cream-soft/10 sm:px-7">
           <button type="button" :disabled="leaving" class="w-full rounded-full border border-error/40 px-6 py-3 font-display font-semibold text-error transition hover:bg-error-bg disabled:cursor-not-allowed disabled:opacity-60 dark:hover:bg-error-bgDark" @click="logout">{{ leaving ? t('profile.leaving') : t('profile.logout') }}</button>
+          <button type="button" class="mt-3 w-full rounded-full bg-error px-6 py-3 font-display font-semibold text-white transition hover:bg-error/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-error" @click="showDeleteConfirmation = true">{{ t('profile.deleteAccount') }}</button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      v-if="showDeleteConfirmation"
+      class="fixed inset-0 z-30 flex items-end justify-center bg-lagoon/40 p-4 backdrop-blur-sm sm:items-center dark:bg-black/60"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="delete-account-title"
+      aria-describedby="delete-account-description"
+      @click.self="showDeleteConfirmation = false"
+    >
+      <div class="w-full max-w-sm rounded-xl2 bg-cream-soft p-6 shadow-soft dark:bg-lagoon-light">
+        <h2 id="delete-account-title" class="font-display text-lg font-semibold text-lagoon dark:text-cream-soft">{{ t('profile.deleteConfirmationTitle') }}</h2>
+        <p id="delete-account-description" class="mt-2 text-sm text-lagoon/70 dark:text-cream-soft/70">{{ t('profile.deleteConfirmationMessage') }}</p>
+        <div class="mt-6 flex flex-col gap-2 sm:flex-row sm:justify-end">
+          <button type="button" class="rounded-full border border-lagoon/20 px-5 py-2.5 font-display font-semibold text-lagoon transition hover:bg-lagoon/5 dark:border-cream-soft/20 dark:text-cream-soft dark:hover:bg-cream-soft/10" @click="showDeleteConfirmation = false">{{ t('profile.cancel') }}</button>
+          <button type="button" class="rounded-full bg-error px-5 py-2.5 font-display font-semibold text-white transition hover:bg-error/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-error" @click="confirmAccountDeletion">{{ t('profile.confirm') }}</button>
         </div>
       </div>
     </div>
