@@ -14,6 +14,11 @@ const attempts = ref([])
 const loading = ref(true)
 const errorMessage = ref('')
 const difficultyLevels = ['easy', 'medium', 'hard']
+const difficultyPointColors = {
+  easy: 'fill-success',
+  medium: 'fill-warning',
+  hard: 'fill-error',
+}
 
 const totalPoints = computed(() => attempts.value.reduce((sum, attempt) => sum + attempt.totalScore, 0))
 const totalPossiblePoints = computed(() => attempts.value.reduce((sum, attempt) => sum + attempt.maxScore, 0))
@@ -67,6 +72,7 @@ const chartPoints = computed(() => {
     return {
       attempt,
       accuracy,
+      color: difficultyPointColors[attempt.difficulty] ?? 'fill-rosewood',
       x,
       y: bottom - accuracy / 100 * (bottom - top),
       label: new Intl.DateTimeFormat(locale.value, { day: '2-digit', month: '2-digit' }).format(new Date(attempt.startedAt)),
@@ -102,9 +108,9 @@ onMounted(loadStatistics)
 </script>
 
 <template>
-  <div class="container">
+  <div class="account-page-layout">
     <SideBar/>
-    <section class="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-14">
+    <section class="account-page-content">
       <header>
         <h1 class="font-display text-2xl font-semibold text-lagoon dark:text-cream-soft sm:text-3xl">{{ t('statistics.title') }}</h1>
         <p class="mt-2 text-lagoon/65 dark:text-cream-soft/65">{{ t('statistics.subtitle') }}</p>
@@ -130,12 +136,12 @@ onMounted(loadStatistics)
           <article class="rounded-xl2 bg-blush-soft p-5 shadow-soft dark:bg-lagoon-light/40 dark:shadow-softDark">
             <p class="text-sm font-semibold text-rosewood/80 dark:text-cream-soft/70">{{ t('statistics.totalPoints') }}</p>
             <p class="mt-2 font-display text-3xl font-bold text-lagoon dark:text-cream-soft">{{ formatPoints(totalPoints) }}<span class="text-xl font-medium text-lagoon/55 dark:text-cream-soft/55"> / {{ formatPoints(totalPossiblePoints) }}</span> <span class="text-base font-medium">{{ t('statistics.points') }}</span></p>
-            <p class="mt-1 text-sm font-semibold text-error">{{ totalPointsPercentage }}% {{ t('statistics.pointsPercentage') }}</p>
+            <p class="mt-1 text-sm font-semibold text-lagoon/55 dark:text-cream-soft/55">{{ totalPointsPercentage }}% {{ t('statistics.pointsPercentage') }}</p>
           </article>
           <article class="rounded-xl2 bg-cream p-5 shadow-soft dark:bg-lagoon-light/40 dark:shadow-softDark">
             <p class="text-sm font-semibold text-lagoon/65 dark:text-cream-soft/65">{{ t('statistics.answeredPoints') }}</p>
             <p class="mt-2 font-display text-3xl font-bold text-lagoon dark:text-cream-soft">{{ formatPoints(answeredPoints) }}<span class="text-xl font-medium text-lagoon/55 dark:text-cream-soft/55"> / {{ formatPoints(answeredPossiblePoints) }}</span> <span class="text-base font-medium">{{ t('statistics.points') }}</span></p>
-            <p class="mt-1 text-sm font-semibold text-error">{{ answeredPointsPercentage }}% {{ t('statistics.pointsPercentage') }}</p>
+            <p class="mt-1 text-sm font-semibold text-lagoon/55 dark:text-cream-soft/55">{{ answeredPointsPercentage }}% {{ t('statistics.pointsPercentage') }}</p>
           </article>
         </section>
 
@@ -150,7 +156,7 @@ onMounted(loadStatistics)
             >
               <h3 class="font-semibold text-lagoon dark:text-cream-soft">{{ t(`upload.difficulty.${summary.level}`) }}</h3>
               <p class="mt-3 font-display text-2xl font-bold text-lagoon dark:text-cream-soft">{{ formatPoints(summary.points) }}<span class="text-base font-medium text-lagoon/50 dark:text-cream-soft/50"> / {{ formatPoints(summary.possible) }} {{ t('statistics.points') }}</span></p>
-              <p class="mt-1 text-sm font-semibold text-error">{{ summary.percentage }}% {{ t('statistics.pointsPercentage') }}</p>
+              <p class="mt-1 text-sm font-semibold text-lagoon/55 dark:text-cream-soft/55">{{ summary.percentage }}% {{ t('statistics.pointsPercentage') }}</p>
               <p class="mt-1 text-sm text-lagoon/55 dark:text-cream-soft/55">{{ summary.quizzes }} {{ t('statistics.quizzes') }}</p>
             </article>
           </div>
@@ -182,12 +188,12 @@ onMounted(loadStatistics)
                 stroke-linejoin="round"
               />
               <g v-for="point in chartPoints" :key="point.attempt.id">
-                <circle :cx="point.x" :cy="point.y" r="5" class="fill-rosewood stroke-cream" stroke-width="2">
+                <circle :cx="point.x" :cy="point.y" r="5" :class="[point.color, 'stroke-cream']" stroke-width="2">
                   <title>{{ point.attempt.title || point.label }} · {{ Math.round(point.accuracy) }}%</title>
                 </circle>
                 <text :x="point.x" y="260" text-anchor="middle" class="fill-lagoon/65 text-[11px] dark:fill-cream-soft/65">{{ point.label }}</text>
                 <text :x="point.x" y="277" text-anchor="middle" class="fill-lagoon/50 text-[10px] dark:fill-cream-soft/50">{{ point.time }}</text>
-                <text :x="point.x" :y="point.y - 11" text-anchor="middle" class="fill-rosewood text-[11px] font-semibold">{{ Math.round(point.accuracy) }}%</text>
+                <text :x="point.x" :y="point.y - 11" text-anchor="middle" class="fill-lagoon/55 text-[11px] font-semibold dark:fill-cream-soft/55">{{ Math.round(point.accuracy) }}%</text>
               </g>
             </svg>
             <p class="mt-2 text-center text-xs text-lagoon/55 dark:text-cream-soft/55">{{ t('statistics.chartXAxis') }}</p>
@@ -197,12 +203,3 @@ onMounted(loadStatistics)
     </section>
   </div>
 </template>
-
-<style scoped>
-.container {
-  display: flex; 
-  flex-direction: row; 
-  align-items: flex-start; 
-}
-
-</style>

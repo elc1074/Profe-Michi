@@ -12,6 +12,26 @@ body {
   @apply font-body bg-cream-soft text-lagoon dark:bg-lagoon-soft dark:text-cream-soft transition-colors duration-300;
 }
 
+.account-page-layout {
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+  min-height: calc(100vh - 61px);
+  width: 100%;
+  max-width: 68rem;
+  margin-inline: auto;
+}
+
+.account-page-content {
+  box-sizing: border-box;
+  flex: 0 1 50rem;
+  min-width: 0;
+  max-width: 50rem;
+  width: 100%;
+  margin-inline: auto;
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 2.5vw, 1.5rem);
+}
+
 h1, h2, h3, h4 {
   font-family: theme('fontFamily.display');
 }
@@ -44,4 +64,14 @@ input:focus-visible {
 }
 .scrollbar-thin::-webkit-scrollbar-thumb {
   @apply bg-misty/60 rounded-full;
+}
+
+@media (max-width: 1023px) {
+  .account-page-layout {
+    flex-direction: column;
+  }
+
+  .account-page-content {
+    flex-basis: auto;
+  }
 }

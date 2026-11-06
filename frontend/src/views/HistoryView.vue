@@ -49,9 +49,9 @@ onMounted(loadHistory)
 </script>
 
 <template>
-  <div class="container">
+  <div class="account-page-layout">
     <SideBar/>
-    <section class="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
+    <section class="account-page-content">
       <header>
         <h1 class="font-display text-2xl font-semibold text-lagoon dark:text-cream-soft sm:text-3xl">{{ t('history.title') }}</h1>
         <p class="mt-2 text-lagoon/65 dark:text-cream-soft/65">{{ t('history.subtitle') }}</p>
@@ -93,12 +93,3 @@ onMounted(loadHistory)
     </section>
   </div>
 </template>
-
-<style scoped>
-.container {
-  display: flex; 
-  flex-direction: row; 
-  align-items: flex-start; 
-}
-
-</style>

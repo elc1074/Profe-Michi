@@ -21,8 +21,8 @@ const initials = computed(() => {
 </script>
 
 <template>
-  <header class="sticky top-0 z-20 border-b border-lagoon/10 bg-cream-soft/90 backdrop-blur dark:border-cream-soft/10 dark:bg-lagoon-soft/90">
-    <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
+  <header class="sticky top-0 z-20 h-[61px] border-b border-lagoon/10 bg-cream-soft/90 backdrop-blur dark:border-cream-soft/10 dark:bg-lagoon-soft/90">
+    <div class="mx-auto flex h-full max-w-5xl items-center justify-between px-4 sm:px-6">
       <RouterLink to="/" class="flex items-center gap-2.5">
         <!-- <MascotLogo :size="36" /> -->
         <img class="mascote_icone" src="../../public/mascote_icone.png" alt="Mascote Ícone" width="36" height="36">

@@ -41,10 +41,10 @@ async function confirmAccountDeletion() {
 </script>
 
 <template>  
-  <div class="container">
+  <div class="account-page-layout">
     <SideBar/>  
-    <div class="info-perfil">
-      <section class="bg-cream px-4 py-12 sm:py-16 dark:bg-lagoon-soft">
+    <div class="account-page-content">
+      <section class="bg-cream dark:bg-lagoon-soft">
         <div class="mx-auto w-full max-w-md">
           <div class="mb-7 text-center">
             <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blush text-rosewood dark:bg-rosewood/30 dark:text-cream-soft">
@@ -97,18 +97,3 @@ async function confirmAccountDeletion() {
     </div>
   </div>
 </template>
-
-<style scoped>
-.container {
-  display: flex; 
-  align-items: stretch;
-  flex-direction: row;
-  min-height: 100vh;
-  width: 100%;
-}
-
-.info-perfil{
-  flex: 1;
-  justify-content: center;
-}
-</style>
