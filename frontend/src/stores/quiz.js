@@ -27,6 +27,7 @@ export const useQuizStore = defineStore('quiz', {
 
     grading: false,
     result: null,
+    savedAttemptId: null,
 
     showUnansweredDialog: false,
     simulateError: false,
@@ -74,6 +75,7 @@ export const useQuizStore = defineStore('quiz', {
       this.generating = true
       this.generated = false
       this.result = null
+      this.savedAttemptId = null
 
       try {
         const generatedQuiz = await requestQuiz(this.file, {
@@ -149,6 +151,16 @@ export const useQuizStore = defineStore('quiz', {
         transcript,
       }
     },
+    restorePendingResult(snapshot) {
+      this.file = snapshot.sourceFile ? { name: snapshot.sourceFile } : null
+      this.chapter = snapshot.chapter
+      this.difficulty = snapshot.difficulty
+      this.questions = snapshot.questions
+      this.recordings = snapshot.recordings
+      this.result = snapshot.result
+      this.generated = true
+      this.savedAttemptId = null
+    },
     deleteRecording(id) {
       if (this.recordings[id]?.audioUrl) URL.revokeObjectURL(this.recordings[id].audioUrl)
       this.recordings[id] = {
@@ -218,6 +230,7 @@ export const useQuizStore = defineStore('quiz', {
       this.recordings = {}
       this.grading = false
       this.result = null
+      this.savedAttemptId = null
       this.showUnansweredDialog = false
     },
   },

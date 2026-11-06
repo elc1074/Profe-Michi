@@ -21,8 +21,8 @@ const initials = computed(() => {
 </script>
 
 <template>
-  <header class="sticky top-0 z-20 border-b border-lagoon/10 bg-cream-soft/90 backdrop-blur dark:border-cream-soft/10 dark:bg-lagoon-soft/90">
-    <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
+  <header class="sticky top-0 z-20 h-[61px] border-b border-lagoon/10 bg-cream-soft/90 backdrop-blur dark:border-cream-soft/10 dark:bg-lagoon-soft/90">
+    <div class="mx-auto flex h-full max-w-5xl items-center justify-between px-4 sm:px-6">
       <RouterLink to="/" class="flex items-center gap-2.5">
         <!-- <MascotLogo :size="36" /> -->
         <img class="mascote_icone" src="../../public/mascote_icone.png" alt="Mascote Ícone" width="36" height="36">
@@ -37,22 +37,23 @@ const initials = computed(() => {
         >
           {{ t('nav.home') }}
         </RouterLink>
+    
         <RouterLink
-          to="/"
+          to="/historico"
           class="rounded-full px-4 py-2 text-sm font-semibold text-lagoon/80 transition hover:bg-lagoon/5 dark:text-cream-soft/80 dark:hover:bg-cream-soft/10"
           active-class="!bg-blush/60 !text-lagoon dark:!bg-rosewood/30 dark:!text-cream-soft"
         >
           {{ t('nav.history') }}
         </RouterLink>
         <RouterLink
-          to="/"
+          to="/estatisticas"
           class="rounded-full px-4 py-2 text-sm font-semibold text-lagoon/80 transition hover:bg-lagoon/5 dark:text-cream-soft/80 dark:hover:bg-cream-soft/10"
           active-class="!bg-blush/60 !text-lagoon dark:!bg-rosewood/30 dark:!text-cream-soft"
         >
           {{ t('nav.statistics') }}
         </RouterLink>
+  
       </nav>
-
       <div class="flex items-center gap-2">
         <LocaleSwitcher />
         <ThemeToggle />

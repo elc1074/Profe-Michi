@@ -13,6 +13,39 @@
     "soon": "Próximamente",
     "theme": "Cambiar tema"
   },
+  "history": {
+    "title": "Historial de quizzes",
+    "subtitle": "Consulta tus intentos y revisa las respuestas corregidas.",
+    "loading": "Cargando tu historial…",
+    "retry": "Intentar de nuevo",
+    "emptyTitle": "Tu historial está vacío",
+    "emptyBody": "Aquí aparecerán los quizzes realizados con tu cuenta.",
+    "newQuiz": "Hacer un quiz",
+    "untitledQuiz": "Quiz sin título",
+    "questions": "preguntas",
+    "attemptNotFound": "No encontramos ese quiz guardado.",
+    "backToHistory": "Volver al Historial",
+    "cancel": "Cancelar"
+  },
+  "statistics": {
+    "title": "Tus estadísticas",
+    "subtitle": "Sigue tu desempeño según los quizzes realizados.",
+    "loading": "Cargando tus estadísticas…",
+    "retry": "Intentar de nuevo",
+    "emptyTitle": "Aún no hay estadísticas",
+    "emptyBody": "Haz un quiz para empezar a seguir tu desempeño.",
+    "newQuiz": "Hacer un quiz",
+    "overview": "Resumen del desempeño",
+    "totalPoints": "Puntos totales",
+    "answeredPoints": "Puntos de las preguntas respondidas",
+    "pointsPercentage": "de los puntos posibles",
+    "pointsByDifficulty": "Puntos por nivel de dificultad",
+    "points": "puntos",
+    "quizzes": "quizzes",
+    "accuracyOverTime": "Porcentaje de aciertos a lo largo del tiempo",
+    "chartDescription": "Porcentaje de preguntas correctas en cada quiz guardado, en orden cronológico.",
+    "chartXAxis": "Fecha y hora del quiz"
+  },
   "profile": {
     "title": "Tu perfil",
     "subtitle": "Revisa la información de tu cuenta.",
@@ -21,7 +54,17 @@
     "password": "Contraseña",
     "notProvided": "No informado",
     "logout": "Cerrar sesión",
-    "leaving": "Cerrando sesión…"
+    "leaving": "Cerrando sesión…",
+    "deleteAccount": "Eliminar cuenta",
+    "deleteConfirmationTitle": "Eliminar cuenta",
+    "deleteConfirmationMessage": "Si deseas borrar todos los datos de tu cuenta, confirma a continuación.",
+    "confirm": "Confirmar",
+    "cancel": "Cancelar",
+    "deletionInProgress": "Borrando tus datos",
+    "deletionCompleted": "La información de tu perfil se ha borrado.",
+    "deletionFollowup": "Pero Profe Michi sigue disponible para estudiar contigo! Puedes crear una cuenta nueva o acceder como visitante.",
+    "mascotAlt": "Mascota Profe Michi",
+    "close": "Cerrar"
   },
   "home": {
     "title": "Estudia anatomía respondiendo por texto o voz",
@@ -34,8 +77,6 @@
     "step2Body": "Escribe tu respuesta o explícala hablando, sin apuro.",
     "step3Title": "3. Recibe feedback",
     "step3Body": "Profe Michi corrige y te da comentarios para mejorar.",
-    "futureTitle": "Muy pronto",
-    "futureBody": "Inicio de sesión, perfil e historial de quizzes llegarán en próximas versiones.",
     "visitorTitle":"Accede como visitante o crea un perfil",
     "visitorBody": "Al acceder a tu perfil o crearlo, se guardarán tu historial de cuestionarios y tus estadísticas. Si no deseas hacerlo, Profe Michi te permite crear cuestionarios, pero estos no se guardarán."
   },
@@ -165,7 +206,14 @@
     "feedback": "Comentario",
     "timeSpent": "Tiempo usado",
     "newQuiz": "Iniciar nuevo quiz",
-    "historySoon": "Pronto podrás guardar y consultar tu historial aquí.",
+    "saveQuiz": "Guardar quiz",
+    "saving": "Guardando…",
+    "saved": "Quiz guardado en tu Historial.",
+    "saveTitle": "Guardar quiz en el Historial",
+    "saveDescription": "Ponle un nombre para encontrarlo después. Si lo dejas en blanco, usaremos la fecha y hora del guardado.",
+    "quizName": "Nombre del quiz",
+    "quizNameOptional": "Nombre (opcional)",
+    "historySoon": "Los quizzes guardados en tu cuenta están disponibles en Historial.",
     "status": {
       "correct": "Correcta",
       "incorrect": "Incorrecta",
@@ -194,6 +242,12 @@
       "missingChapter": "No se pudo preparar el material para corregir las respuestas. Genera el quiz nuevamente.",
       "invalidEvaluation": "El servicio devolvió una evaluación en un formato inválido. Intenta nuevamente.",
       "missingEvaluation": "El servicio no devolvió la corrección de las respuestas. Intenta nuevamente."
+    },
+    "history": {
+      "notConfigured": "La base de datos no está configurada. Avísale al equipo responsable.",
+      "loadFailed": "No pudimos cargar tus quizzes. Inténtalo de nuevo.",
+      "saveFailed": "No pudimos guardar el quiz. Inténtalo de nuevo.",
+      "pendingSaveFailed": "No pudimos conservar el quiz antes de iniciar sesión. Inténtalo de nuevo."
     },
     "auth": {
       "notConfigured": "El inicio de sesión no está configurado. Avísale al equipo responsable.",

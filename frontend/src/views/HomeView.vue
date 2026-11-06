@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import BaseButton from '../components/BaseButton.vue'
 import MascotFull from '../components/MascotFull.vue'
+import AccountDeletionDialogHost from '../components/AccountDeletionDialogHost.vue'
 import { preloadLiveTranscription } from '../services/krokoLiveTranscription'
 
 const { t, locale } = useI18n()
@@ -23,6 +24,7 @@ const steps = [
 </script>
 
 <template>
+  <AccountDeletionDialogHost />
   <div class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-10">
     <section class="grid items-center gap-10 sm:grid-cols-2">
       <div>
@@ -72,9 +74,5 @@ const steps = [
       </div>
     </section>
 
-    <section class="mt-10 rounded-xl2 border border-dashed border-lagoon/20 p-5 dark:border-cream-soft/20">
-      <p class="font-display text-sm font-semibold text-lagoon/70 dark:text-cream-soft/70">{{ t('home.futureTitle') }}</p>
-      <p class="mt-1 text-sm text-lagoon/55 dark:text-cream-soft/55">{{ t('home.futureBody') }}</p>
-    </section>
   </div>
 </template>

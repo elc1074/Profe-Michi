@@ -13,6 +13,39 @@
     "soon": "Coming soon",
     "theme": "Toggle theme"
   },
+  "history": {
+    "title": "Quiz history",
+    "subtitle": "Review your attempts and revisit graded answers.",
+    "loading": "Loading your history…",
+    "retry": "Try again",
+    "emptyTitle": "Your history is empty",
+    "emptyBody": "Quizzes completed with your account will appear here.",
+    "newQuiz": "Take a quiz",
+    "untitledQuiz": "Untitled quiz",
+    "questions": "questions",
+    "attemptNotFound": "We couldn't find that saved quiz.",
+    "backToHistory": "Back to History",
+    "cancel": "Cancel"
+  },
+  "statistics": {
+    "title": "Your statistics",
+    "subtitle": "Track your performance across completed quizzes.",
+    "loading": "Loading your statistics…",
+    "retry": "Try again",
+    "emptyTitle": "No statistics yet",
+    "emptyBody": "Take a quiz to start tracking your performance.",
+    "newQuiz": "Take a quiz",
+    "overview": "Performance overview",
+    "totalPoints": "Total points",
+    "answeredPoints": "Points from answered questions",
+    "pointsPercentage": "of possible points",
+    "pointsByDifficulty": "Points by difficulty level",
+    "points": "points",
+    "quizzes": "quizzes",
+    "accuracyOverTime": "Accuracy over time",
+    "chartDescription": "Percentage of correct questions for each saved quiz, in chronological order.",
+    "chartXAxis": "Quiz date and time"
+  },
   "profile": {
     "title": "Your profile",
     "subtitle": "Review your account information.",
@@ -21,7 +54,17 @@
     "password": "Password",
     "notProvided": "Not provided",
     "logout": "Sign out",
-    "leaving": "Signing out…"
+    "leaving": "Signing out…",
+    "deleteAccount": "Delete account",
+    "deleteConfirmationTitle": "Delete account",
+    "deleteConfirmationMessage": "If you want to delete all the data in your account, confirm below.",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "deletionInProgress": "Deleting your data",
+    "deletionCompleted": "Your profile information has been deleted.",
+    "deletionFollowup": "But Profe Michi is still available to study with you! You can create a new account or access as a visitor.",
+    "mascotAlt": "Profe Michi mascot",
+    "close": "Close"
   },
   "home": {
     "title": "Study anatomy by answering with text or voice",
@@ -34,8 +77,6 @@
     "step2Body": "Type your answer or explain it out loud, at your own pace.",
     "step3Title": "3. Get feedback",
     "step3Body": "Profe Michi grades it and shares tips to improve.",
-    "futureTitle": "Coming soon",
-    "futureBody": "Login, profile, and quiz history are on the way.",
     "visitorTitle": "Continue as a guest or create a profile",
     "visitorBody": "When you sign in or create a profile, your quiz history and statistics are saved. If you'd rather not, Profe Michi still lets you create quizzes, but they won't be saved."
   },
@@ -165,7 +206,14 @@
     "feedback": "Feedback",
     "timeSpent": "Time spent",
     "newQuiz": "Start a new quiz",
-    "historySoon": "Soon you'll be able to save and revisit your history here.",
+    "saveQuiz": "Save quiz",
+    "saving": "Saving…",
+    "saved": "Quiz saved to your History.",
+    "saveTitle": "Save quiz to History",
+    "saveDescription": "Give this quiz a name so you can find it later. If left blank, we’ll use its saved date and time.",
+    "quizName": "Quiz name",
+    "quizNameOptional": "Name (optional)",
+    "historySoon": "Quizzes saved to your account are available in History.",
     "status": {
       "correct": "Correct",
       "incorrect": "Incorrect",
@@ -194,6 +242,12 @@
       "missingChapter": "We couldn't prepare the material to grade the answers. Generate the quiz again.",
       "invalidEvaluation": "The service returned an evaluation in an invalid format. Try again.",
       "missingEvaluation": "The service didn't return the answer grading. Try again."
+    },
+    "history": {
+      "notConfigured": "The database is not configured. Please contact the team responsible.",
+      "loadFailed": "We couldn't load your quizzes. Try again.",
+      "saveFailed": "We couldn't save the quiz. Try again.",
+      "pendingSaveFailed": "We couldn't preserve the quiz before sign-in. Try again."
     },
     "auth": {
       "notConfigured": "Sign-in is not configured. Please contact the team responsible.",
