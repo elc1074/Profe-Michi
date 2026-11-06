@@ -38,7 +38,7 @@ async function confirmAccountDeletion() {
 
 <template>
   <section class="bg-cream px-4 py-12 sm:py-16 dark:bg-lagoon-soft">
-    <div class="mx-auto w-full max-w-xl">
+    <div class="mx-auto w-full max-w-md">
       <div class="mb-7 text-center">
         <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blush text-rosewood dark:bg-rosewood/30 dark:text-cream-soft">
           <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6.75A3.75 3.75 0 1 1 8.25 6.75a3.75 3.75 0 0 1 7.5 0ZM4.5 20.25a7.5 7.5 0 0 1 15 0" /></svg>

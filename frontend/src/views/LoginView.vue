@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 import I18nManager from '@/i18n/manager'
 import { useAuthStore } from '@/stores/auth'
+import { PENDING_QUIZ_SAVE_KEY } from '@/services/pendingQuizSave'
 import { lerErroOAuthDaUrl } from '@/services/auth'
 import FormLogin from '@/components/FormLogin.vue'
 import NewAccount from '@/components/NewAccount.vue'
@@ -29,6 +30,8 @@ function destinoAposLogin() {
   const redirect = route.query.redirect
   return typeof redirect === 'string' && redirect.startsWith('/')
     ? redirect
+    : sessionStorage.getItem(PENDING_QUIZ_SAVE_KEY)
+      ? '/resultado?save=1'
     : I18nManager.i18nRoute({ name: 'upload' })
 }
 
@@ -119,10 +122,10 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <div class="flex min-h-screen items-start justify-center bg-cream px-4 pt-24 pb-12 dark:bg-lagoon-soft">
-    <div class="w-full max-w-sm rounded-xl2 border border-lagoon/10 bg-cream-soft p-8 shadow-soft dark:border-cream-soft/10 dark:bg-lagoon-light/40">
+  <div class="flex min-h-screen items-start justify-center bg-cream px-4 pt-12 pb-8 dark:bg-lagoon-soft">
+    <div class="w-full max-w-md rounded-xl2 border border-lagoon/10 bg-cream-soft p-8 shadow-soft dark:border-cream-soft/10 dark:bg-lagoon-light/40">
       <div class="mb-8 flex flex-col items-center gap-3 text-center">
-        <img class="mascote_icone" src="../../public/mascote_icone.png" alt="Mascote Ícone" width="36" height="36">
+        <img class="mascote_icone" src="../../public/mascote_icone.png" alt="Mascote Ícone" width="50" height="50">
         <h1 class="font-display text-2xl font-semibold text-lagoon dark:text-cream-soft">{{ t('app.name') }}</h1>
       </div>
 

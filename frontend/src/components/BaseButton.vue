@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-  variant: { type: String, default: 'primary' }, // primary | secondary | ghost | danger
+  variant: { type: String, default: 'primary' }, // primary | secondary | outline | ghost | danger
   size: { type: String, default: 'md' }, // md | lg
   disabled: { type: Boolean, default: false },
   type: { type: String, default: 'button' },
@@ -12,6 +12,8 @@ const variants = {
     'bg-rosewood text-cream-soft hover:bg-rosewood-dark active:scale-[0.98] shadow-soft disabled:bg-lagoon/20 disabled:text-lagoon/40 dark:disabled:bg-cream-soft/10 dark:disabled:text-cream-soft/30',
   secondary:
     'bg-misty/40 text-lagoon hover:bg-misty/60 active:scale-[0.98] dark:bg-misty-dark/30 dark:text-cream-soft dark:hover:bg-misty-dark/50',
+  outline:
+    'border-2 border-rosewood bg-rosewood/10 text-rosewood hover:bg-rosewood/20 active:scale-[0.98] dark:bg-rosewood/20 dark:text-cream-soft dark:hover:bg-rosewood/30',
   ghost:
     'bg-transparent text-lagoon hover:bg-lagoon/5 dark:text-cream-soft dark:hover:bg-cream-soft/10',
   danger:
