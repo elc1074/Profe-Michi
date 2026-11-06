@@ -37,6 +37,7 @@ const initials = computed(() => {
         >
           {{ t('nav.home') }}
         </RouterLink>
+    
         <RouterLink
           to="/historico"
           class="rounded-full px-4 py-2 text-sm font-semibold text-lagoon/80 transition hover:bg-lagoon/5 dark:text-cream-soft/80 dark:hover:bg-cream-soft/10"
@@ -51,8 +52,8 @@ const initials = computed(() => {
         >
           {{ t('nav.statistics') }}
         </RouterLink>
+  
       </nav>
-
       <div class="flex items-center gap-2">
         <LocaleSwitcher />
         <ThemeToggle />
