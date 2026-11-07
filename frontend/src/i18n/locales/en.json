@@ -260,6 +260,9 @@
       "connection": "We couldn't connect to the sign-in service. Check your connection and try again.",
       "generic": "We couldn't sign you in. Try again.",
       "oauthCancelled": "Google sign-in was cancelled."
+    },
+    "profile": {
+      "deleteFailed": "We couldn't delete your account. Please try again."
     }
   },
   "common": {

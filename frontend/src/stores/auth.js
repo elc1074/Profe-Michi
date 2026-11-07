@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import {
   buscarPerfil,
   criarConta,
+  excluirConta,
   entrarComEmail,
   entrarComGoogle,
   obterSessao,
@@ -99,6 +100,20 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
+  async function deleteAccount() {
+    await excluirConta()
+
+    // A conta já não existe no servidor; limpamos a sessão local mesmo se o
+    // signOut remoto responder com erro por causa da exclusão.
+    try {
+      await sair()
+    } catch {
+      // A remoção foi concluída; apenas a invalidação remota da sessão falhou.
+    } finally {
+      aplicarSessao(null)
+    }
+  }
+
   return {
     session,
     user,
@@ -114,6 +129,7 @@ export const useAuthStore = defineStore('auth', () => {
     continueAsGuest,
     register,
     logout,
+    deleteAccount,
     refreshProfile: carregarPerfil,
   }
 })

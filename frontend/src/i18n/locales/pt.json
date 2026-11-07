@@ -260,6 +260,9 @@
       "connection": "Não foi possível conectar ao serviço de login. Verifique sua conexão e tente novamente.",
       "generic": "Não conseguimos entrar. Tente novamente.",
       "oauthCancelled": "Login com o Google cancelado."
+    },
+    "profile": {
+      "deleteFailed": "Não foi possível excluir a conta. Tente novamente."
     }
   },
   "common": {

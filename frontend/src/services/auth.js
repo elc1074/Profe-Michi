@@ -117,6 +117,22 @@ export async function sair() {
   await executar(() => supabase.auth.signOut())
 }
 
+// A remoção de auth.users requer a service-role key. Por isso esta chamada vai
+// para uma Edge Function; essa chave nunca deve ser exposta no navegador.
+export async function excluirConta() {
+  const cliente = exigirSupabase()
+
+  try {
+    const { error } = await cliente.functions.invoke('delete-account', {
+      method: 'POST',
+    })
+    if (error) throw error
+  } catch (erro) {
+    console.error('Supabase account deletion failed', erro)
+    throw erroTraduzido('error.profile.deleteFailed')
+  }
+}
+
 export async function obterSessao() {
   if (!isSupabaseConfigured) return null
   const data = await executar(() => supabase.auth.getSession())
