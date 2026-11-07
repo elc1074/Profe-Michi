@@ -26,7 +26,9 @@ onBeforeUnmount(() => clearInterval(ticker))
 
 const activeQuestion = computed(() => quiz.currentQuestion)
 const currentRecording = computed(() => quiz.recordings[activeQuestion.value?.id] ?? { status: 'idle', elapsed: 0 })
-const isRecording = computed(() => Object.values(quiz.recordings).some((recording) => recording.status === 'recording'))
+const isRecording = computed(() => Object.values(quiz.recordings).some((recording) => (
+  recording.status === 'recording' || recording.status === 'finalizing'
+)))
 
 function formatTime(sec) {
   const m = Math.floor(sec / 60)
@@ -83,6 +85,7 @@ function reviewFirstUnanswered() {
           :audio-url="currentRecording.audioUrl"
           :transcript="currentRecording.transcript"
           @start="quiz.startRecording(activeQuestion.id)"
+          @stop-started="quiz.finishRecording(activeQuestion.id)"
           @stop="quiz.stopRecording(activeQuestion.id, $event)"
           @delete="quiz.deleteRecording(activeQuestion.id)"
           @update-transcript="quiz.updateTranscript(activeQuestion.id, $event)"

@@ -9,7 +9,7 @@ const props = defineProps({
   transcript: { type: String, default: '' },
   questionId: { type: [String, Number], required: true },
 })
-const emit = defineEmits(['start', 'stop', 'delete', 'update-transcript', 'submit-text', 'start-text-timing'])
+const emit = defineEmits(['start', 'stop-started', 'stop', 'delete', 'update-transcript', 'submit-text', 'start-text-timing'])
 
 const { t, locale } = useI18n()
 
@@ -89,6 +89,8 @@ async function startRecording() {
 async function stopRecording() {
   if (!transcription || finalizingTranscript.value) return
   finalizingTranscript.value = true
+  stopTicking()
+  emit('stop-started')
   try {
     const recording = await transcription.stop()
     if (recording) {
@@ -103,7 +105,6 @@ async function stopRecording() {
     error.value = reason.message || t('error.body')
   } finally {
     transcription = null
-    stopTicking()
     finalizingTranscript.value = false
   }
 }
@@ -116,10 +117,9 @@ async function handleTap() {
   }
 }
 
-async function handleReRecord() {
+function handleReRecord() {
   liveTranscript.value = ''
   emit('delete')
-  await startRecording()
 }
 
 function handleDelete() {
@@ -137,13 +137,6 @@ function submitTextAnswer() {
 
 function returnToAudio() {
   textMode.value = false
-}
-
-const isPlaying = ref(false)
-async function togglePlay() {
-  if (!audioElement.value) return
-  if (audioElement.value.paused) await audioElement.value.play()
-  else audioElement.value.pause()
 }
 
 const formattedTime = computed(() => {
@@ -194,7 +187,11 @@ const formattedTime = computed(() => {
         class="grid h-24 w-24 place-items-center rounded-full bg-rosewood text-cream-soft shadow-soft transition active:scale-95"
         :aria-label="t('quiz.recorder.start')"
       >
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
+        <svg v-if="preparing" class="animate-spin" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="3" opacity=".3" />
+          <path d="M12 4a8 8 0 0 1 8 8" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+        </svg>
+        <svg v-else width="34" height="34" viewBox="0 0 24 24" fill="none">
           <rect x="9" y="3" width="6" height="12" rx="3" fill="currentColor" />
           <path d="M6 11a6 6 0 0 0 12 0M12 19v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
         </svg>
@@ -209,15 +206,20 @@ const formattedTime = computed(() => {
     </template>
 
     <!-- Recording -->
-    <template v-else-if="status === 'recording'">
+    <template v-else-if="status === 'recording' || status === 'finalizing'">
       <button
         type="button"
         @click="handleTap"
+        :disabled="finalizingTranscript || status === 'finalizing'"
         class="relative grid h-24 w-24 place-items-center rounded-full bg-error text-cream-soft shadow-soft transition active:scale-95"
-        :aria-label="t('quiz.recorder.stop')"
+        :aria-label="finalizingTranscript || status === 'finalizing' ? t('quiz.recorder.finalizingTitle') : t('quiz.recorder.stop')"
       >
-        <span class="absolute inset-0 animate-ping rounded-full bg-error/40"></span>
-        <svg class="relative" width="26" height="26" viewBox="0 0 24 24" fill="none">
+        <span v-if="!finalizingTranscript && status === 'recording'" class="absolute inset-0 animate-ping rounded-full bg-error/40"></span>
+        <svg v-if="finalizingTranscript || status === 'finalizing'" class="relative animate-spin" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="3" opacity=".3" />
+          <path d="M12 4a8 8 0 0 1 8 8" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+        </svg>
+        <svg v-else class="relative" width="26" height="26" viewBox="0 0 24 24" fill="none">
           <rect x="6" y="6" width="12" height="12" rx="2.5" fill="currentColor" />
         </svg>
       </button>
@@ -234,24 +236,13 @@ const formattedTime = computed(() => {
 
     <!-- Recorded -->
     <template v-else>
-      <button
-        v-if="audioUrl"
-        type="button"
-        @click="togglePlay"
-        class="grid h-24 w-24 place-items-center rounded-full bg-sage text-cream-soft shadow-soft transition active:scale-95"
-        :aria-label="isPlaying ? t('quiz.recorder.pause') : t('quiz.recorder.play')"
-      >
-        <svg v-if="!isPlaying" width="30" height="30" viewBox="0 0 24 24" fill="none">
-          <path d="M8 5.5v13l11-6.5-11-6.5Z" fill="currentColor" />
-        </svg>
-        <svg v-else width="26" height="26" viewBox="0 0 24 24" fill="none">
-          <rect x="6" y="5" width="4" height="14" rx="1.5" fill="currentColor" />
-          <rect x="14" y="5" width="4" height="14" rx="1.5" fill="currentColor" />
-        </svg>
-      </button>
       <div>
         <p class="font-display font-semibold text-lagoon dark:text-cream-soft">{{ audioUrl ? t('quiz.recorder.readyTitle') : t('quiz.recorder.textReadyTitle') }}</p>
         <p class="text-sm text-lagoon/60 dark:text-cream-soft/60">{{ audioUrl ? t('quiz.recorder.readyHint') : t('quiz.recorder.textReadyHint') }}</p>
+      </div>
+      <div v-if="audioUrl" class="w-full max-w-xl text-left">
+        <p class="mb-1 text-xs font-semibold text-lagoon/70 dark:text-cream-soft/70">{{ t('quiz.recorder.listenLabel') }}</p>
+        <audio ref="audioElement" :src="audioUrl" controls class="w-full" />
       </div>
       <div class="w-full max-w-xl text-left">
         <label :for="`transcript-${questionId}`" class="text-xs font-semibold text-lagoon/70 dark:text-cream-soft/70">
@@ -284,15 +275,6 @@ const formattedTime = computed(() => {
           {{ audioUrl ? t('quiz.recorder.delete') : t('quiz.recorder.deleteTextAnswer') }}
         </button>
       </div>
-      <audio
-        v-if="audioUrl"
-        ref="audioElement"
-        :src="audioUrl"
-        class="hidden"
-        @play="isPlaying = true"
-        @pause="isPlaying = false"
-        @ended="isPlaying = false"
-      />
     </template>
   </div>
 </template>

@@ -74,7 +74,18 @@ onMounted(async () => {
     return
   }
 
+  // Uma tentativa de usuário autenticado deve chegar ao histórico sem exigir
+  // uma ação extra na tela de resultado. Se o salvamento falhar, o botão
+  // continua disponível para que a pessoa possa tentar novamente.
+  if (!isHistoricalResult.value && quiz.result && auth.user?.id && !quiz.savedAttemptId) {
+    await saveResult({ redirectToLogin: false })
+  }
+
   if (route.query.save === '1' && quiz.result) {
+    if (quiz.savedAttemptId) {
+      await router.replace({ name: 'result' })
+      return
+    }
     if (auth.isAuthenticated) {
       showSaveForm.value = true
     } else {
@@ -146,21 +157,26 @@ async function requestSave() {
   }
 }
 
-async function saveResult() {
+async function saveResult({ redirectToLogin = true } = {}) {
   saveError.value = ''
   saving.value = true
 
   try {
     await auth.init()
     if (!auth.user?.id) {
-      preservePendingResult()
-      await router.push({
-        name: 'login',
-        query: { redirect: '/resultado?save=1' },
-      })
+      if (redirectToLogin) {
+        preservePendingResult()
+        await router.push({
+          name: 'login',
+          query: { redirect: '/resultado?save=1' },
+        })
+      }
       return
     }
-    const attemptId = await saveQuizAttempt({
+
+    // Preserve the completed attempt before any navigation can reset the
+    // in-memory quiz state while the database request is in progress.
+    const attempt = {
       userId: auth.user.id,
       title: saveName.value,
       source: quiz.file?.name,
@@ -169,6 +185,9 @@ async function saveResult() {
       questions: quiz.questions,
       recordings: quiz.recordings,
       result: quiz.result,
+    }
+    const attemptId = await saveQuizAttempt({
+      ...attempt,
     })
     quiz.savedAttemptId = attemptId
     sessionStorage.removeItem(PENDING_QUIZ_SAVE_KEY)
@@ -279,6 +298,9 @@ function startNewQuiz() {
     </div>
 
     <div class="mt-8 flex flex-col items-center gap-5 pt-4">
+      <p v-if="saving" class="text-sm font-semibold text-lagoon/65 dark:text-cream-soft/65" role="status">
+        {{ t('result.saving') }}
+      </p>
       <BaseButton
         v-if="!isSaved && !isHistoricalResult"
         size="lg"
@@ -287,7 +309,7 @@ function startNewQuiz() {
       >{{ t('result.saveQuiz') }}</BaseButton>
       <p v-if="savedMessage" class="text-sm font-semibold text-success dark:text-sage-light" role="status">{{ t('result.saved') }}</p>
       <p v-if="saveError" class="text-sm font-semibold text-error" role="alert">{{ saveError }}</p>
-      <BaseButton variant="outline" size="lg" @click="startNewQuiz">{{ t('result.newQuiz') }}</BaseButton>
+      <BaseButton variant="outline" size="lg" :disabled="saving" @click="startNewQuiz">{{ t('result.newQuiz') }}</BaseButton>
       <BaseButton v-if="isHistoricalResult" variant="ghost" @click="router.push('/historico')">{{ t('history.backToHistory') }}</BaseButton>
     </div>
 

@@ -154,6 +154,7 @@
       "editTranscriptHint": "Você pode corrigir qualquer palavra reconhecida incorretamente.",
       "readyTitle": "Gravação pronta",
       "readyHint": "Você pode ouvir ou regravar se quiser.",
+      "listenLabel": "Ouça sua gravação",
       "textReadyTitle": "Resposta em texto pronta",
       "textReadyHint": "Você pode revisar ou excluir sua resposta.",
       "editTextAnswerTitle": "Revise sua resposta",

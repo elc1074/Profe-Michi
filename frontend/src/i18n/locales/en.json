@@ -154,6 +154,7 @@
       "editTranscriptHint": "You can correct any incorrectly recognized words.",
       "readyTitle": "Recording ready",
       "readyHint": "You can listen back or re-record.",
+      "listenLabel": "Listen to your recording",
       "textReadyTitle": "Written answer ready",
       "textReadyHint": "You can review or delete your answer.",
       "editTextAnswerTitle": "Review your answer",

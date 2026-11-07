@@ -106,7 +106,7 @@ export const useQuizStore = defineStore('quiz', {
     tickCurrent() {
       const q = this.currentQuestion
       const recording = q ? this.recordings[q.id] : null
-      if (!recording || (recording.status !== 'recording' && !recording.timing)) return
+      if (!recording?.timing) return
       this.recordings[q.id].elapsed++
     },
     startTextTiming(id) {
@@ -124,13 +124,19 @@ export const useQuizStore = defineStore('quiz', {
       this.recordings[id].timing = true
       this.recordings[id].status = 'recording'
     },
+    finishRecording(id) {
+      const recording = this.recordings[id]
+      if (!recording) return
+      recording.status = 'finalizing'
+      recording.timing = false
+    },
     stopRecording(id, recording) {
       this.recordings[id] = {
         ...this.recordings[id],
         ...recording,
         status: 'recorded',
         mode: 'audio',
-        timing: true,
+        timing: false,
         elapsed: this.recordings[id].elapsed,
       }
     },
