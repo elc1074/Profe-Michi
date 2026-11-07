@@ -6,6 +6,7 @@
 
 html {
   -webkit-tap-highlight-color: transparent;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -18,15 +19,15 @@ body {
   align-items: stretch;
   min-height: calc(100vh - 61px);
   width: 100%;
-  max-width: 68rem;
-  margin-inline: auto;
+  max-width: none;
+  margin-inline: 0;
 }
 
 .account-page-content {
   box-sizing: border-box;
-  flex: 0 1 50rem;
+  flex: 0 1 64rem;
   min-width: 0;
-  max-width: 50rem;
+  max-width: 64rem;
   width: 100%;
   margin-inline: auto;
   padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 2.5vw, 1.5rem);

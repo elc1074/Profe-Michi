@@ -72,12 +72,12 @@ onMounted(loadHistory)
         <BaseButton class="mt-5" @click="router.push('/enviar')">{{ t('history.newQuiz') }}</BaseButton>
       </div>
 
-      <div v-else class="mt-7 space-y-4">
+      <div v-else class="mt-7 max-w-4xl space-y-4">
         <button
           v-for="attempt in attempts"
           :key="attempt.id"
           type="button"
-          class="group w-full rounded-xl2 bg-cream p-5 text-left shadow-soft transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rosewood dark:bg-lagoon-light/40 dark:shadow-softDark"
+          class="group w-full rounded-xl2 bg-blush-soft p-5 text-left shadow-soft transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rosewood dark:bg-lagoon-light/40 dark:shadow-softDark dark:hover:bg-rosewood/20"
           @click="openAttempt(attempt)"
         >
           <span class="flex items-center justify-between gap-4">
@@ -87,7 +87,7 @@ onMounted(loadHistory)
             </div>
             <svg class="shrink-0 transition-transform group-hover:translate-x-1" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
           </span>
-          <span class="mt-3 block text-sm text-lagoon/60 dark:text-cream-soft/60">{{ attempt.correctAnswers }} {{ t('result.correct') }} / {{ attempt.totalQuestions }} {{ t('history.questions') }}</span>
+          <span class="mt-3 block text-sm text-lagoon/65 dark:text-cream-soft/65">{{ attempt.correctAnswers }} {{ t('result.correct') }} / {{ attempt.totalQuestions }} {{ t('history.questions') }}</span>
         </button>
       </div>
     </section>
