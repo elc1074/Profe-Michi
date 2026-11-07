@@ -211,7 +211,7 @@
     "saving": "Guardando…",
     "saved": "Quiz guardado en tu Historial.",
     "saveTitle": "Guardar quiz en el Historial",
-    "saveDescription": "Ponle un nombre para encontrarlo después. Si lo dejas en blanco, usaremos la fecha y hora del guardado.",
+    "saveDescription": "El nombre se creará automáticamente con el archivo PDF y la fecha y hora del guardado.",
     "quizName": "Nombre del quiz",
     "quizNameOptional": "Nombre (opcional)",
     "historySoon": "Los quizzes guardados en tu cuenta están disponibles en Historial.",

@@ -12,6 +12,9 @@ const BUILTIN_STREAMING_MODELS = {
 }
 const TRACE_STARTED_AT = typeof performance !== 'undefined' ? performance.now() : Date.now()
 const transcriptionDiagnostics = []
+// Keep the microphone open briefly after the user presses stop. This lets the
+// Web Audio callback deliver the final phonemes that were already in flight.
+const FINALIZATION_CAPTURE_DELAY_MS = 350
 
 const recognizers = new Map()
 const modelParts = new Map()
@@ -476,6 +479,12 @@ export class KrokoLiveTranscription {
 
   async stop() {
     if (!this.recording) return null
+
+    // Stopping the MediaStream immediately can discard its final audio block,
+    // which commonly truncates the last syllable of an answer. The recorder UI
+    // remains in its "finalizing" state during this short grace period.
+    await new Promise((resolve) => setTimeout(resolve, FINALIZATION_CAPTURE_DELAY_MS))
+
     this.recording = false
     this.processor?.disconnect()
     this.source?.disconnect()

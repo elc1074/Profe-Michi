@@ -211,7 +211,7 @@
     "saving": "Salvando…",
     "saved": "Quiz salvo no seu Histórico.",
     "saveTitle": "Salvar quiz no Histórico",
-    "saveDescription": "Dê um nome para encontrar este quiz depois. Se deixar em branco, usaremos a data e hora do salvamento.",
+    "saveDescription": "O nome será criado automaticamente com o arquivo PDF, a data e a hora do salvamento.",
     "quizName": "Nome do quiz",
     "quizNameOptional": "Nome (opcional)",
     "historySoon": "Os quizzes salvos na sua conta ficam disponíveis no Histórico.",

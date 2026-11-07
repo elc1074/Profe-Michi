@@ -19,7 +19,6 @@ const loadingAttempt = ref(false)
 const loadError = ref('')
 const saving = ref(false)
 const saveError = ref('')
-const saveName = ref('')
 const showSaveForm = ref(false)
 const savedMessage = ref(false)
 
@@ -178,7 +177,6 @@ async function saveResult({ redirectToLogin = true } = {}) {
     // in-memory quiz state while the database request is in progress.
     const attempt = {
       userId: auth.user.id,
-      title: saveName.value,
       source: quiz.file?.name,
       topic: quiz.chapter,
       difficulty: quiz.difficulty,
@@ -324,14 +322,6 @@ function startNewQuiz() {
       >
         <h2 class="font-display text-xl font-semibold text-lagoon dark:text-cream-soft">{{ t('result.saveTitle') }}</h2>
         <p class="mt-2 text-sm text-lagoon/65 dark:text-cream-soft/65">{{ t('result.saveDescription') }}</p>
-        <label for="saved-quiz-name" class="mt-5 block text-sm font-semibold text-lagoon dark:text-cream-soft">{{ t('result.quizName') }}</label>
-        <input
-          id="saved-quiz-name"
-          v-model="saveName"
-          maxlength="120"
-          class="mt-2 w-full rounded-lg border border-lagoon/20 bg-cream px-4 py-3 text-lagoon outline-none focus:border-rosewood focus:ring-2 focus:ring-rosewood/20 dark:border-cream-soft/20 dark:bg-lagoon-soft dark:text-cream-soft"
-          :placeholder="t('result.quizNameOptional')"
-        >
         <p v-if="saveError" class="mt-3 text-sm font-semibold text-error" role="alert">{{ saveError }}</p>
         <div class="mt-6 flex justify-end gap-3">
           <BaseButton variant="ghost" :disabled="saving" @click="showSaveForm = false">{{ t('history.cancel') }}</BaseButton>

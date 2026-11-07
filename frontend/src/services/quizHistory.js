@@ -1,6 +1,16 @@
 import i18n from '@/i18n'
 import { supabase, isSupabaseConfigured } from '@/services/supabase'
 
+export function buildQuizTitle(source, savedAt = new Date(), locale = 'pt-BR') {
+  const fileName = source?.trim() || 'Quiz'
+  const dateTime = new Intl.DateTimeFormat(locale, {
+    dateStyle: 'short',
+    timeStyle: 'short',
+  }).format(savedAt)
+
+  return `${fileName} — ${dateTime}`
+}
+
 const ATTEMPT_SELECT = `
   id,
   started_at,
@@ -134,7 +144,6 @@ export async function getUserQuizAttempt(userId, attemptId) {
 
 export async function saveQuizAttempt({
   userId,
-  title,
   source,
   topic,
   difficulty,
@@ -148,13 +157,15 @@ export async function saveQuizAttempt({
 
   let quizId
   let attemptId
+  const locale = i18n.global.locale.value ?? i18n.global.locale ?? 'pt-BR'
+  const generatedTitle = buildQuizTitle(source, new Date(), locale)
 
   try {
     const { data: quiz, error: quizError } = await supabase
       .from('quizzes')
       .insert({
         created_by: userId,
-        title: title.trim(),
+        title: generatedTitle,
         source: source || null,
         topic: topic || null,
         difficulty,

@@ -211,7 +211,7 @@
     "saving": "Saving…",
     "saved": "Quiz saved to your History.",
     "saveTitle": "Save quiz to History",
-    "saveDescription": "Give this quiz a name so you can find it later. If left blank, we’ll use its saved date and time.",
+    "saveDescription": "The name will be created automatically from the PDF file and its saved date and time.",
     "quizName": "Quiz name",
     "quizNameOptional": "Name (optional)",
     "historySoon": "Quizzes saved to your account are available in History.",
