@@ -78,7 +78,15 @@
     "step3Title": "3. Recibe feedback",
     "step3Body": "Profe Michi corrige y te da comentarios para mejorar.",
     "visitorTitle":"Accede como visitante o crea un perfil",
-    "visitorBody": "Al acceder a tu perfil o crearlo, se guardarán tu historial de cuestionarios y tus estadísticas. Si no deseas hacerlo, Profe Michi te permite crear cuestionarios, pero estos no se guardarán."
+    "visitorBody": "Al acceder a tu perfil o crearlo, se guardarán tu historial de cuestionarios y tus estadísticas. Si no deseas hacerlo, Profe Michi te permite crear cuestionarios, pero estos no se guardarán.",
+    "start": "Entrar",
+    "aboutTitle": "Sobre Profe Michi",
+    "aboutBody": "Profe Michi es un proyecto COIL de la Universidade Federal de Santa Maria (Santa Maria, Rio Grande do Sul, Brasil) y la Universidad Santo Tomás (Santiago, Chile). La colaboración se llevó a cabo en las asignaturas de Proyecto de Software II (Brasil) y Anatomía de Animales de Compañía (Chile), reuniendo a estudiantes brasileños de Ciencias de la Computación y Sistemas de Información con estudiantes chilenos de Medicina Veterinaria. Los estudiantes brasileños se encargaron del desarrollo técnico, mientras que los chilenos colaboraron en las pruebas y evaluaciones de contenido y usabilidad.",
+    "useTitle": "Cómo usar el sistema",
+    "useBody": "Profe Michi es una herramienta de estudio que permite repasar contenidos de anatomía veterinaria de forma interactiva, proporcionando feedback personalizado y estadísticas para el seguimiento del desempeño. Los siguientes videos muestran las funcionalidades del sistema:",
+    "developmentTitle": "Más información sobre el desarrollo",
+    "developmentBody": "A continuación, las estudiantes que participaron en el proyecto COIL explican cómo fue el desarrollo de Profe Michi, desde la concepción de la idea hasta la implementación del sistema:",
+    "teamTitle": "Equipo de desarrollo"
   },
   "upload": {
     "title": "Sube el material de estudio",

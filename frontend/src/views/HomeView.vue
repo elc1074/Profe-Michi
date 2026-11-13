@@ -21,6 +21,45 @@ const steps = [
   { title: 'step2Title', body: 'step2Body', icon: 'mic' },
   { title: 'step3Title', body: 'step3Body', icon: 'heart' },
 ]
+
+const participantes = [
+  {
+    name: 'Amanda Carolina Messer Siebeneichler',
+    course: 'Sistemas de Informação',
+    university: 'Universidade Federal de Santa Maria (UFSM)',
+    photo: '/public/mascote_maior.webp',
+  },
+  {
+    name: 'Daiane Dias Vieira',
+    course: 'Ciência da Computação',
+    university: 'Universidade Federal de Santa Maria (UFSM)',
+    photo: '/public/mascote_maior.webp',
+  },
+  {
+    name: 'Giovana Borelli',
+    course: 'Ciência da Computação',
+    university: 'Universidade Federal de Santa Maria (UFSM)',
+    photo: '/public/mascote_maior.webp',
+  },
+  {
+    name: 'Nathália de Almeida Zófoli',
+    course: 'Sistemas de Informação',
+    university: 'Universidade Federal de Santa Maria (UFSM)',
+    photo: '/public/mascote_maior.webp',
+  },
+  {
+    name: 'Ana Catalina Rojas Navarro',
+    course: 'Anatomía de Animales de Compañía',
+    university: 'Universidad Santo Tomás (UST)',
+    photo: '/public/mascote_maior.webp',
+  },
+  {
+    name: 'Catalina Belén Martinez González',
+    course: 'Anatomía de Animales de Compañía',
+    university: 'Universidad Santo Tomás (UST)',
+    photo: '/public/mascote_maior.webp',
+  },
+]
 </script>
 
 <template>
@@ -68,11 +107,66 @@ const steps = [
     </section>
 
     <section class="mt-16">
-      <h2 class="font-display text-xl font-semibold text-lagoon dark:text-cream-soft">{{ t('home.visitorTitle') }}</h2>
-      <div class="mt-5 sm:grid-cols-3">
-        <p class="mt-1 text-sm text-lagoon/65 dark:text-cream-soft/65">{{ t('home.visitorBody') }}</p>
+      <h2 class="font-display text-xl font-semibold text-lagoon dark:text-cream-soft">
+        {{ t('home.visitorTitle') }}
+      </h2>
+      
+      <div class="mt-5 flex items-center justify-between gap-8">
+        <p class="text-base text-lagoon/70 dark:text-cream-soft/70">
+          {{ t('home.visitorBody') }}
+        </p>
+        
+        <BaseButton size="lg" class="shrink-0" @click="startNewQuiz">
+          {{ t('home.start') }}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </BaseButton>
       </div>
     </section>
 
+    <section class="mt-16">
+      <h2 class="font-display text-xl font-semibold text-lagoon dark:text-cream-soft">{{ t('home.aboutTitle') }}</h2>
+      <p class="mt-4 text-base text-lagoon/70 dark:text-cream-soft/70">{{ t('home.aboutBody') }}</p>
+    </section>
+    
+    <section class="mt-16">
+      <h2 class="font-display text-xl font-semibold text-lagoon dark:text-cream-soft">
+        {{ t('home.teamTitle') }}
+      </h2>
+
+      <div class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div
+          v-for="member in participantes"
+          :key="member.name"
+          class="flex flex-col items-center rounded-xl2 bg-cream p-5 text-center shadow-soft dark:bg-lagoon-light/50 dark:shadow-softDark"
+        >
+          <img
+            :src="member.photo"
+            :alt="member.name"
+            class="mb-4 h-20 w-20 rounded-xl object-cover"
+          />
+
+          <h3 class="font-display font-semibold text-lagoon dark:text-cream-soft">
+            {{ member.name }}
+          </h3>
+          <p class="mt-1 text-sm text-lagoon/70 dark:text-cream-soft/70">
+            {{ member.course }}
+          </p>
+          <p class="mt-0.5 text-xs font-medium text-sage-dark dark:text-sage-light">
+            {{ member.university }}
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="mt-16">
+      <h2 class="font-display text-xl font-semibold text-lagoon dark:text-cream-soft">{{ t('home.useTitle') }}</h2>
+      <p class="mt-4 text-base text-lagoon/70 dark:text-cream-soft/70">{{ t('home.useBody') }}</p>
+    </section>
+
+    <section class="mt-16">
+      <h2 class="font-display text-xl font-semibold text-lagoon dark:text-cream-soft">{{ t('home.developmentTitle') }}</h2>
+      <p class="mt-4 text-base text-lagoon/70 dark:text-cream-soft/70">{{ t('home.developmentBody') }}</p>
+    </section>
   </div>
 </template>
