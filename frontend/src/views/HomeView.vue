@@ -159,9 +159,34 @@ const participantes = [
         </div>
       </div>
     </section>
+
     <section class="mt-16">
       <h2 class="font-display text-xl font-semibold text-lagoon dark:text-cream-soft">{{ t('home.useTitle') }}</h2>
       <p class="mt-4 text-base text-lagoon/70 dark:text-cream-soft/70">{{ t('home.useBody') }}</p>
+      <h3 class="font-display font-semibold text-lagoon dark:text-cream-soft">{{ t('home.functionsTitle') }}</h3>
+      <iframe width="560" 
+        height="315" 
+        src="https://www.youtube.com/embed/c1Etevp-6fM?si=ZWAtmb8WKsFN6o6t" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin" 
+        allowfullscreen>
+      </iframe>
+
+      <video
+        src="../../public/Apresentação.mp4"
+        controls
+        class="mt-4 w-full rounded-lg"
+      ></video>
+
+      <h3 class="font-display font-semibold text-lagoon dark:text-cream-soft">{{ t('home.profileTitle') }}</h3>
+
+      <video
+        src="../../public/Perfil.mp4"
+        controls
+        class="mt-4 w-full rounded-lg"
+      ></video>
     </section>
 
     <section class="mt-16">
@@ -170,3 +195,13 @@ const participantes = [
     </section>
   </div>
 </template>
+
+<style scoped>
+video {
+  height: 400px;
+  width: auto;
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+</style>
