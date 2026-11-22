@@ -88,7 +88,16 @@
     "profileTitle": "Funcionalidades do perfil",
     "developmentTitle": "Saiba mais sobre o desenvolvimento",  
     "developmentBody": "Abaixo, as alunas do COIL explicam como foi o desenvolvimento do Profe Michi, desde a concepção da ideia até a implementação do sistema:",
-    "teamTitle": "Equipe de desenvolvimento"
+    "teamTitle": "Equipe de desenvolvimento",
+    "toolUseTitle": "Utilizando o sistema",
+    "tooleUseBody": "As alunas de Anatomía de Animales de Compañía explicam como utilizar o sistema:",
+    "carouselPrev": "Vídeo anterior",
+    "carouselNext": "Vídeo siguiente",
+    "carouselGoTo": "Ir ao video {n}",
+    "videoPresentation": "Apresentação do sistema",
+    "videoAccount": "Criação de conta",
+    "videoProfile": "Funcionalidades do sistema",
+    "videoQuiz": "Como criar e responder um quiz"
   },
   "upload": {
     "title": "Envie o material de estudo",
