@@ -60,6 +60,18 @@ const participantes = [
     university: 'Universidade Federal de Santa Maria (UFSM)',
     photo: '/public/mascote_maior.webp',
   },
+  {
+    name: 'Andrea Schwertner Charão',
+    course: 'Docente do Departamento de Linguagens e Sistemas de Computação',
+    university: 'Universidade Federal de Santa Maria (UFSM)',
+    photo: '/public/mascote_maior.webp',
+  },
+  {
+    name: 'Flavia Montenegro Donoso',
+    course: 'Académica Planta Medicina Veterinaria ',
+    university: 'Universidad Santo Tomás (UST)',
+    photo: '/public/mascote_maior.webp',
+  },
 ]
 
 const videos = [
@@ -71,6 +83,9 @@ const videos = [
 
 const singleVideo = { id: '7nh7tPM3ugw', titleKey: 'home.toolUseTitle' }
 const singlePlaying = ref(false)
+
+const singleVideo2 = { id: 'YXlSvyfTbCU', titleKey: 'home.developmentTitle' }
+const singlePlaying2 = ref(false)
 
 const carousel = ref(null)
 const activeVideo = ref(0)
@@ -270,7 +285,7 @@ function onCarouselScroll() {
             class="h-full w-full"
             :src="`https://www.youtube.com/embed/${singleVideo.id}?autoplay=1`"
             :title="t(singleVideo.titleKey)"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
           ></iframe>
@@ -306,17 +321,18 @@ function onCarouselScroll() {
         {{ t('home.teamTitle') }}
       </h2>
 
-      <div class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="mt-5 flex flex-wrap justify-center gap-4">
         <div
           v-for="member in participantes"
           :key="member.name"
           class="flex flex-col items-center rounded-xl2 bg-cream p-5 text-center shadow-soft dark:bg-lagoon-light/50 dark:shadow-softDark"
         >
-          <img
+          <!--<img
             :src="member.photo"
             :alt="member.name"
             class="mb-4 h-20 w-20 rounded-xl object-cover"
           />
+      -->
 
           <h3 class="font-display font-semibold text-lagoon dark:text-cream-soft align-center">
             {{ member.name }}
@@ -334,6 +350,43 @@ function onCarouselScroll() {
     <section class="mt-16">
       <h2 class="font-display text-xl font-semibold text-lagoon dark:text-cream-soft">{{ t('home.developmentTitle') }}</h2>
       <p class="mt-4 text-base text-lagoon/70 dark:text-cream-soft/70">{{ t('home.developmentBody') }}</p>
+
+      <figure class="mx-auto mt-6 max-w-3xl">
+        <div class="relative aspect-video w-full overflow-hidden rounded-xl2 shadow-soft dark:shadow-softDark">
+          <iframe
+            v-if="singlePlaying2"
+            class="h-full w-full"
+            :src="`https://www.youtube.com/embed/${singleVideo2.id}?autoplay=1`"
+            :title="t(singleVideo2.titleKey)"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+
+          <button
+            v-else
+            type="button"
+            class="group relative block h-full w-full"
+            :aria-label="`${t('home.playVideo')}: ${t(singleVideo2.titleKey)}`"
+            @click="singlePlaying2 = true"
+          >
+            <img
+              :src="`https://i.ytimg.com/vi/${singleVideo2.id}/maxresdefault.jpg`"
+              alt=""
+              loading="lazy"
+              class="h-full w-full object-cover"
+              @error="$event.target.src = `https://i.ytimg.com/vi/${singleVideo2.id}/hqdefault.jpg`"
+            />
+            <span class="absolute inset-0 grid place-items-center bg-lagoon/20 transition group-hover:bg-lagoon/30">
+              <span class="grid h-16 w-16 place-items-center rounded-full bg-rosewood text-cream-soft shadow-soft">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M8 5.5v13l11-6.5-11-6.5Z" fill="currentColor" />
+                </svg>
+              </span>
+            </span>
+          </button>
+        </div>
+      </figure>
     </section>
   </div>
 </template>
