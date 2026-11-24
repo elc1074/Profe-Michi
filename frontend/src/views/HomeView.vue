@@ -62,7 +62,13 @@ const participantes = [
   },
   {
     name: 'Andrea Schwertner Charão',
-    course: 'Docente do Departamento de Linguagens e Sistemas de Computação',
+    course: 'Docente do Departamento de Linguagens \ne Sistemas de Computação',
+    university: 'Universidade Federal de Santa Maria (UFSM)',
+    photo: '/public/mascote_maior.webp',
+  },
+  {
+    name: 'Celio Trois',
+    course: 'Docente do Departamento de Linguagens \ne Sistemas de Computação',
     university: 'Universidade Federal de Santa Maria (UFSM)',
     photo: '/public/mascote_maior.webp',
   },
@@ -84,7 +90,7 @@ const videos = [
 const singleVideo = { id: '7nh7tPM3ugw', titleKey: 'home.toolUseTitle' }
 const singlePlaying = ref(false)
 
-const singleVideo2 = { id: 'YXlSvyfTbCU', titleKey: 'home.developmentTitle' }
+const singleVideo2 = { id: 'TqdzoaxQleY', titleKey: 'home.developmentTitle' }
 const singlePlaying2 = ref(false)
 
 const carousel = ref(null)
@@ -334,10 +340,10 @@ function onCarouselScroll() {
           />
       -->
 
-          <h3 class="font-display font-semibold text-lagoon dark:text-cream-soft align-center">
+          <h3 class="font-display font-semibold text-lagoon dark:text-cream-soft align-center whitespace-pre-line">
             {{ member.name }}
           </h3>
-          <p class="mt-1 text-sm text-lagoon/70 dark:text-cream-soft/70 align-center">
+          <p class="mt-1 text-sm text-lagoon/70 dark:text-cream-soft/70 align-center whitespace-pre-line">
             {{ member.course }}
           </p>
           <p class="mt-0.5 text-xs font-medium text-sage-dark dark:text-sage-light align-center">
