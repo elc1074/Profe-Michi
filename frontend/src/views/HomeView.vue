@@ -90,7 +90,7 @@ const videos = [
 const singleVideo = { id: '7nh7tPM3ugw', titleKey: 'home.toolUseTitle' }
 const singlePlaying = ref(false)
 
-const singleVideo2 = { id: 'TqdzoaxQleY', titleKey: 'home.developmentTitle' }
+const singleVideo2 = { id: '_9-A2OpTNFg', titleKey: 'home.developmentTitle' }
 const singlePlaying2 = ref(false)
 
 const carousel = ref(null)
